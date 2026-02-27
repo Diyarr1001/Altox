@@ -139,21 +139,46 @@ export default function Header() {
                         exit={{ opacity: 0, height: 0 }}
                         className="lg:hidden bg-white border-b border-slate-200 overflow-y-auto max-h-[80vh]"
                     >
-                        <div className="px-4 py-6 flex flex-col space-y-4">
-                            <Link href="/services" onClick={() => setMobileMenuOpen(false)} className="text-xl font-black text-primary-900 border-b border-primary-100 pb-2">All Services Overview</Link>
-
-                            <h4 className="font-bold text-slate-400 uppercase text-xs tracking-widest pt-4">By Modality</h4>
-                            <div className="grid grid-cols-1 gap-1 pl-4 border-l-2 border-slate-100 pb-4">
-                                {servicesData.map(s => (
-                                    <Link key={s.slug} href={`/services/${s.slug}`} onClick={() => setMobileMenuOpen(false)} className="text-sm py-2 text-slate-600">{s.title}</Link>
-                                ))}
+                        <div className="px-4 py-8 flex flex-col space-y-6">
+                            {/* Main Pages */}
+                            <div className="flex flex-col space-y-4">
+                                <Link href="/" onClick={() => setMobileMenuOpen(false)} className="text-lg font-bold text-slate-700 hover:text-primary-600 transition">Home</Link>
+                                <Link href="/about" onClick={() => setMobileMenuOpen(false)} className="text-lg font-bold text-slate-700 hover:text-primary-600 transition">About</Link>
+                                <Link href="/facility" onClick={() => setMobileMenuOpen(false)} className="text-lg font-bold text-slate-700 hover:text-primary-600 transition">Facility</Link>
+                                <Link href="/bioanalysis-pathology" onClick={() => setMobileMenuOpen(false)} className="text-lg font-bold text-slate-700 hover:text-primary-600 transition">Bioanalysis</Link>
                             </div>
 
-                            <h4 className="font-bold text-slate-400 uppercase text-xs tracking-widest pt-4 border-t border-slate-100">By Target Molecule</h4>
-                            <div className="grid grid-cols-1 gap-1 pl-4 border-l-2 border-slate-100">
-                                {moleculesData.map(m => (
-                                    <Link key={m.slug} href={`/molecules/${m.slug}`} onClick={() => setMobileMenuOpen(false)} className="text-sm py-2 text-slate-600">{m.title}</Link>
-                                ))}
+                            <div className="h-px bg-slate-100" />
+
+                            {/* Services Section */}
+                            <div>
+                                <Link href="/services" onClick={() => setMobileMenuOpen(false)} className="text-xl font-black text-primary-900 mb-4 block">Services Overview</Link>
+
+                                <div className="space-y-6">
+                                    <div>
+                                        <h4 className="font-bold text-slate-400 uppercase text-[0.65rem] tracking-widest mb-3">By Modality</h4>
+                                        <div className="grid grid-cols-1 gap-2 pl-4 border-l-2 border-primary-100">
+                                            {servicesData.map(s => (
+                                                <Link key={s.slug} href={`/services/${s.slug}`} onClick={() => setMobileMenuOpen(false)} className="text-sm py-1 text-slate-600 hover:text-primary-600">{s.title}</Link>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <h4 className="font-bold text-slate-400 uppercase text-[0.65rem] tracking-widest mb-3 border-t border-slate-50 pt-4">By Target Molecule</h4>
+                                        <div className="grid grid-cols-1 gap-2 pl-4 border-l-2 border-secondary-100">
+                                            {moleculesData.map(m => (
+                                                <Link key={m.slug} href={`/molecules/${m.slug}`} onClick={() => setMobileMenuOpen(false)} className="text-sm py-1 text-slate-600 hover:text-secondary-600">{m.title}</Link>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="pt-4">
+                                <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="block w-full text-center py-4 bg-primary-900 text-white rounded-2xl font-bold shadow-lg shadow-primary-900/20">
+                                    Contact Us
+                                </Link>
                             </div>
                         </div>
                     </motion.div>
