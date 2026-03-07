@@ -59,27 +59,41 @@ export default function Home() {
   return (
     <div className="w-full bg-transparent overflow-hidden selection:bg-indigo-100 selection:text-indigo-900">
 
-      {/* ================= HERO SECTION (Mesh Gradient + Apple Style) ================= */}
-      <section ref={heroRef} className="relative min-h-[90vh] flex items-center pt-32 pb-20 overflow-hidden bg-mesh">
-        <motion.div style={{ y: yBg, opacity: opacityBg }} className="absolute inset-0 z-0">
-          {/* Animated Background Gradients */}
+      {/* ================= HERO SECTION (Innovation & Visual Impact) ================= */}
+      <section ref={heroRef} className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden">
+        {/* Background Video Layer */}
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover opacity-20 scale-105"
+          >
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-futuristic-technology-particle-connection-background-34673-large.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-50/80 via-transparent to-slate-50"></div>
+        </div>
+
+        <motion.div style={{ y: yBg, opacity: opacityBg }} className="absolute inset-0 z-[1] pointer-events-none">
+          {/* Vibrant Animated Gradients */}
           <motion.div
             animate={{
-              scale: [1, 1.2, 1],
-              x: [0, 100, 0],
-              y: [0, 50, 0]
+              scale: [1, 1.4, 1],
+              rotate: [0, 45, 0],
+              opacity: [0.3, 0.5, 0.3]
             }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="absolute -top-1/4 -right-1/4 w-[800px] h-[800px] bg-indigo-200/40 rounded-full blur-[120px]"
+            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -top-1/4 -right-1/4 w-[900px] h-[900px] bg-gradient-to-br from-indigo-300/40 to-blue-200/40 rounded-full blur-[140px]"
           />
           <motion.div
             animate={{
               scale: [1, 1.3, 1],
-              x: [0, -100, 0],
-              y: [0, -50, 0]
+              rotate: [0, -45, 0],
+              opacity: [0.2, 0.4, 0.2]
             }}
-            transition={{ duration: 25, repeat: Infinity, ease: "linear", delay: 2 }}
-            className="absolute -bottom-1/4 -left-1/4 w-[1000px] h-[1000px] bg-emerald-100/30 rounded-full blur-[150px]"
+            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 3 }}
+            className="absolute -bottom-1/4 -left-1/4 w-[1100px] h-[1100px] bg-gradient-to-tr from-emerald-200/30 to-teal-100/30 rounded-full blur-[160px]"
           />
         </motion.div>
 
@@ -90,45 +104,88 @@ export default function Home() {
             animate="visible"
             variants={staggerContainer}
           >
-
-            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-5 py-2 rounded-full glass-card text-indigo-600 text-[0.7rem] font-black mb-12 tracking-[0.2em] uppercase shadow-indigo-500/5">
-              <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
-              Pioneering Preclinical Safety
+            <motion.div
+              variants={fadeUp}
+              className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full glass-card border-indigo-200/50 text-indigo-700 text-[0.75rem] font-black mb-14 tracking-[0.25em] uppercase shadow-xl shadow-indigo-500/10 group cursor-default"
+            >
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-indigo-600"></span>
+              </span>
+              Pioneering Preclinical Innovation
+              <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
             </motion.div>
 
-            <motion.h1 className="text-7xl md:text-9xl font-black text-slate-900 leading-[0.95] mb-12 tracking-[-0.05em] text-balance">
-              <motion.span variants={fadeUp} className="block">Advancing Safety.</motion.span>
-              <motion.span variants={fadeUp} className="block text-indigo-600">
-                Accelerating Innovation.
+            <motion.h1 className="text-7xl md:text-[10rem] font-black text-slate-900 leading-[0.85] mb-14 tracking-[-0.06em] text-balance">
+              <motion.span
+                initial={{ filter: "blur(20px)", opacity: 0, y: 30 }}
+                animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
+                transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                className="block mb-2"
+              >
+                Advancing Safety.
+              </motion.span>
+              <motion.span
+                initial={{ filter: "blur(20px)", opacity: 0, y: 30 }}
+                animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                className="block bg-gradient-to-r from-indigo-600 via-blue-600 to-indigo-500 bg-clip-text text-transparent drop-shadow-sm"
+              >
+                Accelerating Cure.
               </motion.span>
             </motion.h1>
 
-            <motion.p variants={fadeUp} className="text-xl md:text-2xl text-slate-500 mb-16 max-w-3xl mx-auto leading-relaxed font-bold">
-              Precision preclinical pipelines powered by ethics, advanced 3D models, and a state-of-the-art facility in Pune, India.
+            <motion.p variants={fadeUp} className="text-xl md:text-3xl text-slate-500/80 mb-20 max-w-4xl mx-auto leading-tight font-bold tracking-tight">
+              State-of-the-art GLP pipelines merging <span className="text-slate-900">advanced 3D models</span> with clinical-grade integrity for the next generation of life-saving modalities.
             </motion.p>
 
-            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <Link href="/contact" className="group relative overflow-hidden px-10 py-5 rounded-2xl bg-slate-900 text-white font-black hover:bg-indigo-600 transition-all duration-500 shadow-2xl shadow-indigo-500/20 active:scale-95">
-                <span className="relative z-10 flex items-center gap-2 text-lg">Initiate Study <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform duration-500" /></span>
-                <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-indigo-600 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></div>
+            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-8 justify-center items-center">
+              <Link href="/contact" className="group relative px-12 py-6 rounded-2xl bg-slate-900 text-white font-black hover:scale-105 hover:-rotate-1 active:scale-95 transition-all duration-500 shadow-2xl shadow-indigo-500/20">
+                <span className="relative z-10 flex items-center gap-3 text-xl">Initiate Project <ArrowRight size={22} className="group-hover:translate-x-2 transition-transform duration-500" /></span>
+                <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
               </Link>
 
-              <Link href="/facility" className="flex items-center gap-3 px-10 py-5 rounded-2xl bg-white border border-slate-200 text-slate-900 font-black hover:border-indigo-600 hover:text-indigo-600 transition-all duration-500 group">
-                <PlayCircle className="text-indigo-400 group-hover:scale-110 transition-transform duration-500" size={24} /> Virtual Tour
+              <Link href="/facility" className="flex items-center gap-4 px-12 py-6 rounded-2xl bg-white border border-slate-200 text-slate-900 font-black hover:border-indigo-600 hover:text-indigo-600 hover:scale-105 active:scale-95 transition-all duration-500 group">
+                <div className="relative">
+                  <PlayCircle className="text-indigo-500 group-hover:scale-125 transition-transform duration-500" size={28} />
+                  <div className="absolute inset-0 bg-indigo-500/20 rounded-full blur-lg animate-pulse"></div>
+                </div>
+                Virtual Tour
               </Link>
             </motion.div>
           </motion.div>
         </div>
 
+        {/* Dynamic Background Particles (Floating Blobs) */}
+        <div className="absolute inset-0 pointer-events-none z-[2]">
+          {[1, 2, 3].map((i) => (
+            <motion.div
+              key={i}
+              animate={{
+                y: [0, -30, 0],
+                x: [0, 20, 0],
+                opacity: [0.1, 0.2, 0.1]
+              }}
+              transition={{
+                duration: 10 + i * 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className={`absolute blur-3xl rounded-full bg-indigo-500/10 ${i === 1 ? 'w-40 h-40 top-1/4 left-1/4' :
+                i === 2 ? 'w-60 h-60 bottom-1/3 right-1/4' :
+                  'w-32 h-32 top-1/2 right-1/3'
+                }`}
+            />
+          ))}
+        </div>
+
         {/* Scroll Indicator */}
         <motion.div
           initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2, duration: 1 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
         >
-          <motion.div
-            animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity }}
-            className="w-1 h-12 bg-gradient-to-b from-indigo-500 to-transparent rounded-full opacity-30"
-          />
+          <span className="text-[0.6rem] font-black uppercase tracking-[0.4em] text-slate-400 rotate-90 origin-center mb-10 translate-x-1">Scroll</span>
+          <div className="w-px h-24 bg-gradient-to-b from-indigo-500 via-indigo-200 to-transparent opacity-40" />
         </motion.div>
       </section>
 
@@ -187,9 +244,10 @@ export default function Home() {
             {/* Bento Box 2: By Molecule (Tall) */}
             <motion.div
               initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }}
-              className="lg:col-span-4 lg:row-span-2 bg-white rounded-[3rem] p-12 relative overflow-hidden group hover:shadow-3xl transition-all duration-700 border border-slate-200/50 flex flex-col"
+              className="lg:col-span-4 lg:row-span-2 bg-gradient-to-b from-white to-indigo-50/30 rounded-[3rem] p-12 relative overflow-hidden group hover:shadow-3xl transition-all duration-700 border border-slate-200/50 flex flex-col"
             >
-              <div className="w-20 h-20 bg-indigo-50 rounded-3xl flex items-center justify-center mb-10 border border-indigo-100 group-hover:rotate-6 transition-transform duration-500">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/5 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2"></div>
+              <div className="w-20 h-20 bg-indigo-100/50 backdrop-blur-md rounded-3xl flex items-center justify-center mb-10 border border-indigo-200 group-hover:rotate-12 transition-transform duration-500">
                 <Dna size={40} className="text-indigo-600" />
               </div>
               <h3 className="text-4xl font-black text-slate-900 mb-8 tracking-tight">By Target Molecule</h3>
@@ -279,44 +337,46 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= SERVICES OVERVIEW (Sophisticated Grid) ================= */}
-      <section className="py-40 bg-slate-50 relative overflow-hidden">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+      {/* ================= SERVICES OVERVIEW (Sophisticated Vertical Cards) ================= */}
+      <section className="py-40 bg-white relative overflow-hidden">
+        {/* Animated Background Blobs */}
+        <div className="absolute top-1/4 left-0 w-96 h-96 bg-indigo-100/50 rounded-full blur-[120px] -translate-x-1/2"></div>
+        <div className="absolute bottom-1/4 right-0 w-[500px] h-[500px] bg-emerald-50/50 rounded-full blur-[150px] translate-x-1/2"></div>
+
+        <div className="container mx-auto px-6 relative z-10 max-w-7xl">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
             <div className="max-w-2xl">
-              <motion.span initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-indigo-600 font-black tracking-[0.25em] uppercase text-[0.7rem] mb-6 block">Our Capabilities</motion.span>
-              <h2 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tighter">Scientific Excellence.</h2>
+              <motion.span initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-emerald-600 font-black tracking-[0.3em] uppercase text-[0.7rem] mb-6 block">Toxicological Portfolio</motion.span>
+              <h2 className="text-5xl md:text-8xl font-black text-slate-900 leading-tight tracking-tighter">Full spectrum safety.</h2>
             </div>
-            <Link href="/services" className="px-8 py-4 rounded-2xl bg-white border border-slate-200 text-slate-900 font-black hover:border-indigo-600 hover:text-indigo-600 transition-all duration-500 shadow-xl shadow-indigo-500/5">
-              View All Services
+            <Link href="/services" className="group flex items-center gap-4 text-xl font-black text-slate-900 px-8 py-4 rounded-3xl bg-slate-50 border border-slate-200 hover:bg-white hover:shadow-xl transition-all">
+              All Services <ArrowRight size={24} className="group-hover:translate-x-2 transition-transform duration-500" />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {[
-              { title: "General Toxicology", desc: "Comprehensive safety assessments for varied drug candidates.", icon: <Activity className="w-8 h-8" />, color: "indigo" },
-              { title: "Genetic Toxicology", desc: "Advanced assays to assess mutagenic potential and DNA damage.", icon: <Dna className="w-8 h-8" />, color: "emerald" },
-              { title: "Endocrine Assays", desc: "Critical testing for endocrine disrupting potential.", icon: <TestTubes className="w-8 h-8" />, color: "indigo" },
-              { title: "In Vitro Models", desc: "Cutting-edge cell-based alternatives for toxicity testing.", icon: <FlaskConical className="w-8 h-8" />, color: "emerald" },
-              { title: "Safety Pharmacology", desc: "Vital physiological system safety evaluations.", icon: <ShieldCheck className="w-8 h-8" />, color: "indigo" },
-              { title: "DMPK Profiling", desc: "Precise drug metabolism and pharmacokinetic studies.", icon: <Droplets className="w-8 h-8" />, color: "emerald" },
-            ].map((item, i) => (
+              { title: "General Toxicology", img: "https://images.unsplash.com/photo-1544474677-dc323c3bcfad?q=80&w=2070&auto=format&fit=crop", color: "from-indigo-600 to-blue-500", desc: "Global standards for acute, sub-chronic, and chronic safety profile evaluation." },
+              { title: "Genetic Toxicology", img: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?q=80&w=1974&auto=format&fit=crop", color: "from-emerald-600 to-teal-500", desc: "Advanced screens for DNA damage, mutations, and chromosomal instabilities." },
+              { title: "Safety Pharmacology", img: "https://images.unsplash.com/photo-1579154204601-01588f351e67?q=80&w=1470&auto=format&fit=crop", color: "from-rose-600 to-pink-500", desc: "Rigorous physiological monitoring for core system safety and vital impacts." }
+            ].map((s, idx) => (
               <motion.div
-                key={i}
-                className="group relative h-[320px] bg-white rounded-[3rem] p-10 border border-slate-200/50 hover:border-indigo-200 shadow-xl shadow-slate-900/5 hover:shadow-indigo-500/10 transition-all duration-700 flex flex-col justify-between overflow-hidden"
-                initial={{ opacity: 0, y: 30 }}
+                key={idx}
+                initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
+                transition={{ duration: 0.8, delay: idx * 0.1 }}
+                className="group relative h-[650px] rounded-[4rem] overflow-hidden shadow-2xl hover:scale-[1.02] transition-all duration-700"
               >
-                <div className={`w-14 h-14 rounded-2xl bg-${item.color}-50 flex items-center justify-center text-${item.color}-600 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500`}>
-                  {item.icon}
+                <img src={s.img} className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-[2000ms]" alt={s.title} />
+                <div className={`absolute inset-0 bg-gradient-to-b ${s.color} opacity-60 mix-blend-multiply group-hover:opacity-30 transition-opacity`}></div>
+                <div className="absolute inset-x-0 bottom-0 p-12 bg-gradient-to-t from-slate-950 via-slate-900/60 to-transparent pt-32">
+                  <h3 className="text-4xl font-black text-white mb-6 leading-tight group-hover:-translate-y-2 transition-transform duration-500">{s.title}</h3>
+                  <p className="text-white/70 text-lg mb-10 group-hover:text-white transition-colors line-clamp-3 leading-relaxed font-bold">{s.desc}</p>
+                  <Link href="/services" className="w-20 h-20 rounded-3xl bg-white flex items-center justify-center text-slate-900 -translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500 shadow-2xl shadow-white/20">
+                    <ArrowRight size={32} />
+                  </Link>
                 </div>
-                <div>
-                  <h3 className="text-2xl font-black text-slate-900 mb-4 tracking-tight">{item.title}</h3>
-                  <p className="text-slate-500 font-bold leading-relaxed">{item.desc}</p>
-                </div>
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-indigo-500/5 to-transparent rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-700"></div>
               </motion.div>
             ))}
           </div>

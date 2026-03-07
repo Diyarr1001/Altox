@@ -6,35 +6,54 @@ import { ShieldCheck, Target, Eye, Award, Building2, CheckCircle2 } from 'lucide
 export default function About() {
     return (
         <div className="w-full bg-transparent selection:bg-indigo-100 selection:text-indigo-900">
-            {/* Page Header (Mesh Gradient) */}
-            <section className="relative pt-40 pb-32 overflow-hidden bg-mesh">
+            {/* Page Header (Visual Impact) */}
+            <section className="relative pt-48 pb-40 overflow-hidden min-h-[80vh] flex items-center">
+                {/* Background Video Layer */}
+                <div className="absolute inset-0 z-0">
+                    <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-15 grayscale scale-110">
+                        <source src="https://assets.mixkit.co/videos/preview/mixkit-medical-researcher-looking-into-a-microscope-40084-large.mp4" type="video/mp4" />
+                    </video>
+                    <div className="absolute inset-0 bg-gradient-to-b from-slate-50/90 via-transparent to-slate-50"></div>
+                </div>
+
                 <div className="container mx-auto px-6 relative z-10">
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
-                        className="max-w-4xl"
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                        className="max-w-5xl"
                     >
                         <motion.span
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            className="inline-flex items-center gap-2 px-5 py-2 rounded-full glass-card text-indigo-600 text-[0.7rem] font-black mb-10 tracking-[0.2em] uppercase"
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full glass-card border-indigo-200/50 text-indigo-700 text-[0.75rem] font-black mb-12 tracking-[0.3em] uppercase shadow-xl shadow-indigo-500/10"
                         >
-                            <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
-                            Our Origin & Purpose
+                            <span className="relative flex h-2.5 w-2.5">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-indigo-600"></span>
+                            </span>
+                            Legacy of Scientific Rigor
                         </motion.span>
-                        <h1 className="text-6xl md:text-8xl font-black text-slate-900 mb-8 tracking-tighter leading-[0.95]">
-                            The Science of <br /><span className="text-indigo-600">Certainty.</span>
+                        <h1 className="text-7xl md:text-[9rem] font-black text-slate-900 mb-10 tracking-[-0.05em] leading-[0.85] text-balance">
+                            The Science of <br /><span className="bg-gradient-to-r from-indigo-600 to-blue-500 bg-clip-text text-transparent">Certainty.</span>
                         </h1>
-                        <p className="text-xl md:text-2xl text-slate-500 font-bold leading-relaxed max-w-2xl">
-                            Advancing global safety science with uncompromising quality, rigorous ethics, and world-class scientific pedigree.
+                        <p className="text-2xl md:text-3xl text-slate-500/80 font-bold leading-tight max-w-3xl tracking-tight">
+                            Advancing global safety science with <span className="text-slate-900 underline decoration-indigo-200 decoration-8 underline-offset-4">uncompromising quality</span> and world-class scientific pedigree.
                         </p>
                     </motion.div>
                 </div>
 
-                {/* Floating Elements */}
-                <div className="absolute top-1/4 -right-1/4 w-[600px] h-[600px] bg-indigo-200/20 rounded-full blur-[120px] pointer-events-none"></div>
-                <div className="absolute bottom-0 -left-1/4 w-[800px] h-[800px] bg-emerald-100/30 rounded-full blur-[150px] pointer-events-none"></div>
+                {/* Animated Background Blobs */}
+                <motion.div
+                    animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0] }}
+                    transition={{ duration: 20, repeat: Infinity }}
+                    className="absolute top-1/4 -right-1/4 w-[700px] h-[700px] bg-indigo-200/30 rounded-full blur-[140px] pointer-events-none"
+                />
+                <motion.div
+                    animate={{ scale: [1.3, 1, 1.3], rotate: [0, -90, 0] }}
+                    transition={{ duration: 25, repeat: Infinity }}
+                    className="absolute bottom-0 -left-1/4 w-[900px] h-[900px] bg-emerald-100/40 rounded-full blur-[160px] pointer-events-none"
+                />
             </section>
 
             {/* Who We Are (Clean Layout) */}
