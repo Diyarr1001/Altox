@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown, Phone, Mail } from 'lucide-react';
+import { Menu, X, ChevronDown, Phone, Mail, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { servicesData } from '@/data/services';
 import { moleculesData } from '@/data/molecules';
@@ -22,262 +22,231 @@ export default function Header() {
 
     return (
         <>
-            {/* Top Bar */}
-            <div className="bg-primary-900 text-white text-sm py-2 px-4 hidden md:block">
-                <div className="container mx-auto flex justify-between items-center">
-                    <div className="flex items-center space-x-6">
-                        <span className="flex items-center gap-2"><Mail size={14} /> altoxlabs@gmail.com</span>
-                        <span className="flex items-center gap-2"><Phone size={14} /> +91 9403136585</span>
-                    </div>
-                </div>
-            </div>
+            {/* Top Info Bar - Hidden on scroll for minimalism */}
+            <AnimatePresence mode="wait">
+                {!isScrolled && (
+                    <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="bg-slate-950 text-slate-400 text-[0.65rem] py-2 px-4 hidden md:block border-b border-white/5 overflow-hidden"
+                    >
+                        <div className="container mx-auto flex justify-between items-center tracking-[0.15em] font-black uppercase">
+                            <div className="flex items-center space-x-10">
+                                <span className="flex items-center gap-2 hover:text-white transition-colors cursor-pointer"><Mail size={12} className="text-indigo-400" /> altoxlabs@gmail.com</span>
+                                <span className="flex items-center gap-2 hover:text-white transition-colors cursor-pointer"><Phone size={12} className="text-indigo-400" /> +91 9403136585</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                GLP COMPLIANT FACILITY
+                            </div>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
-            {/* Main Navigation */}
-            <header className={`sticky top-0 w-full z-50 transition-all duration-300 border-b ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm border-slate-200 py-3' : 'bg-white border-transparent py-5'}`}>
-                <div className="container mx-auto px-4 flex justify-between items-center">
-                    {/* Logo */}
-                    <Link href="/" className="flex items-center gap-2 group">
+            {/* Main Navigation - Floating Glassmorphism */}
+            <div className={`fixed left-0 right-0 z-50 transition-all duration-700 flex justify-center ${isScrolled ? 'top-4 px-4' : 'top-6 px-0 md:top-12'}`}>
+                <header
+                    className={`transition-all duration-700 flex items-center justify-between shadow-2xl overflow-visible ${isScrolled
+                            ? 'max-w-6xl w-full glass-card rounded-full py-2.5 px-8 shadow-indigo-500/10'
+                            : 'container mx-auto max-w-7xl bg-white/40 backdrop-blur-md rounded-[2.5rem] py-4 px-10 border border-white/20'
+                        }`}
+                >
+                    {/* Logo Section */}
+                    <Link href="/" className="flex items-center gap-4 group">
                         <motion.div
-                            whileHover={{ scale: 1.05, rotate: 5 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="w-10 h-10 bg-gradient-to-br from-primary-800 to-secondary-500 rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-lg shrink-0"
+                            whileHover={{ scale: 1.1, rotate: 10 }}
+                            whileTap={{ scale: 0.9 }}
+                            className="w-11 h-11 bg-gradient-to-br from-indigo-600 to-violet-700 rounded-2xl flex items-center justify-center text-white font-black text-xl shadow-xl shadow-indigo-500/30"
                         >
                             AL
                         </motion.div>
                         <div className="flex flex-col">
-                            <motion.div
-                                initial={{ opacity: 0, x: -10 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                className="font-extrabold text-xl md:text-2xl text-primary-900 leading-none group-hover:text-primary-700 transition-colors"
-                            >
-                                Altox Labs
-                            </motion.div>
-                            <motion.div
-                                initial={{ opacity: 0, x: -10 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: 0.1 }}
-                                className="text-[0.65rem] tracking-widest text-primary-600 font-semibold uppercase mt-1"
-                            >
-                                Solutions through Sciences
-                            </motion.div>
+                            <span className="font-black text-xl md:text-2xl text-slate-900 leading-none tracking-tighter group-hover:text-indigo-600 transition-colors">Altox Labs</span>
+                            <span className="text-[0.6rem] tracking-[0.25em] text-slate-500 font-bold uppercase mt-1">Solutions through Sciences</span>
                         </div>
                     </Link>
 
-                    {/* Desktop Nav */}
-                    <nav className="hidden lg:flex items-center gap-8 font-medium text-slate-700">
+                    {/* Desktop Navigation */}
+                    <nav className="hidden lg:flex items-center gap-1 font-bold text-slate-600 bg-slate-900/5 p-1.5 rounded-full border border-slate-200/50 backdrop-blur-sm">
                         {['Home', 'About', 'Facility'].map((item) => (
                             <Link
                                 key={item}
                                 href={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
-                                className="relative group py-2 hover:text-primary-600 transition-colors"
+                                className="px-6 py-2.5 rounded-full hover:text-indigo-600 hover:bg-white transition-all duration-500 relative group"
                             >
                                 {item}
-                                <motion.span
-                                    className="absolute bottom-0 left-0 w-full h-0.5 bg-primary-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"
-                                />
                             </Link>
                         ))}
 
                         {/* Services Mega Menu */}
                         <div
-                            className="relative group py-2"
+                            className="relative"
                             onMouseEnter={() => setMegaMenuOpen(true)}
                             onMouseLeave={() => setMegaMenuOpen(false)}
                         >
-                            <Link href="/services" className="flex items-center gap-1 hover:text-primary-600 transition focus:outline-none">
-                                Services <ChevronDown size={14} className={`transition-transform duration-200 ${megaMenuOpen ? 'rotate-180' : ''}`} />
+                            <Link
+                                href="/services"
+                                className={`flex items-center gap-1 px-6 py-2.5 rounded-full transition-all duration-500 ${megaMenuOpen ? 'bg-white text-indigo-600 shadow-sm' : 'hover:bg-white hover:text-indigo-600'}`}
+                            >
+                                Services <ChevronDown size={14} className={`transition-transform duration-500 ${megaMenuOpen ? 'rotate-180' : ''}`} />
                             </Link>
 
                             <AnimatePresence>
                                 {megaMenuOpen && (
                                     <motion.div
-                                        initial={{ opacity: 0, y: 15, scale: 0.95 }}
-                                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                                        exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                                        transition={{ duration: 0.3, ease: "easeOut" }}
-                                        className="absolute top-full -left-96 w-[1000px] pt-4"
+                                        initial={{ opacity: 0, y: 20, scale: 0.98, filter: 'blur(10px)' }}
+                                        animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
+                                        exit={{ opacity: 0, y: 15, scale: 0.98, filter: 'blur(10px)' }}
+                                        transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                                        className="absolute top-full -left-64 w-[960px] pt-8 pointer-events-auto"
                                     >
-                                        <div className="bg-white/95 backdrop-blur-xl rounded-[2rem] shadow-2xl border border-slate-100 p-8 grid grid-cols-12 gap-12 overflow-hidden ring-1 ring-black/5">
+                                        <div className="glass-card rounded-[3rem] p-12 grid grid-cols-2 gap-16 shadow-[0_40px_120px_rgba(0,0,0,0.15)] border border-white/50 relative overflow-hidden">
+                                            <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/5 rounded-full blur-[100px] -z-10"></div>
 
-                                            {/* Column 1: By Services */}
-                                            <div className="col-span-6">
-                                                <h3 className="text-sm font-black text-primary-600 uppercase tracking-widest mb-6 border-b border-slate-100 pb-3">By Modality / Service</h3>
-                                                <div className="grid grid-cols-2 gap-x-4 gap-y-1">
-                                                    {servicesData.map((service, idx) => (
+                                            {/* Modality Section */}
+                                            <div>
+                                                <div className="flex items-center gap-3 mb-8 px-4">
+                                                    <div className="w-8 h-8 rounded-lg bg-indigo-100 flex items-center justify-center text-indigo-600">
+                                                        <Menu size={16} />
+                                                    </div>
+                                                    <h3 className="text-[0.7rem] font-black text-indigo-600 uppercase tracking-[0.25em]">By Modality / Service</h3>
+                                                </div>
+                                                <div className="grid grid-cols-1 gap-1.5 focus-within:z-10">
+                                                    {servicesData.slice(0, 6).map((service, idx) => (
                                                         <motion.div
                                                             key={service.slug}
                                                             initial={{ opacity: 0, x: -10 }}
                                                             animate={{ opacity: 1, x: 0 }}
-                                                            transition={{ delay: idx * 0.03 }}
+                                                            transition={{ delay: idx * 0.04 }}
                                                         >
                                                             <Link
                                                                 href={`/services/${service.slug}`}
-                                                                className="text-sm text-slate-600 hover:text-primary-700 hover:bg-primary-50 px-3 py-2 rounded-xl transition-all duration-200 line-clamp-1 flex items-center group/item"
-                                                                title={service.title}
+                                                                className="text-[0.95rem] text-slate-600 hover:text-indigo-700 hover:bg-indigo-50/80 px-5 py-3 rounded-2xl transition-all duration-300 flex items-center justify-between group/item"
                                                             >
-                                                                <span className="w-1.5 h-1.5 rounded-full bg-primary-200 mr-2 group-hover/item:bg-primary-500 transition-colors" />
-                                                                {service.title}
+                                                                <span className="font-bold">{service.title}</span>
+                                                                <ArrowRight size={16} className="opacity-0 -translate-x-3 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all text-indigo-400" />
                                                             </Link>
                                                         </motion.div>
                                                     ))}
                                                 </div>
                                             </div>
 
-                                            {/* Column 2: By Molecule */}
-                                            <div className="col-span-6 border-l border-slate-100 pl-8">
-                                                <h3 className="text-sm font-black text-secondary-500 uppercase tracking-widest mb-6 border-b border-slate-100 pb-3">By Target Molecule</h3>
-                                                <div className="grid grid-cols-2 gap-x-4 gap-y-1">
+                                            {/* Molecule Section */}
+                                            <div className="border-l border-slate-100 pl-16">
+                                                <div className="flex items-center gap-3 mb-8 px-4">
+                                                    <div className="w-8 h-8 rounded-lg bg-emerald-100 flex items-center justify-center text-emerald-600">
+                                                        <ChevronDown size={16} />
+                                                    </div>
+                                                    <h3 className="text-[0.7rem] font-black text-emerald-600 uppercase tracking-[0.25em]">By Target Molecule</h3>
+                                                </div>
+                                                <div className="grid grid-cols-1 gap-1.5">
                                                     {moleculesData.map((mol, idx) => (
                                                         <motion.div
                                                             key={mol.slug}
                                                             initial={{ opacity: 0, x: -10 }}
                                                             animate={{ opacity: 1, x: 0 }}
-                                                            transition={{ delay: 0.2 + (idx * 0.03) }}
+                                                            transition={{ delay: 0.2 + (idx * 0.04) }}
                                                         >
                                                             <Link
                                                                 href={`/molecules/${mol.slug}`}
-                                                                className="text-sm text-slate-600 hover:text-secondary-600 hover:bg-secondary-50 px-3 py-2 rounded-xl transition-all duration-200 line-clamp-1 flex items-center group/item"
-                                                                title={mol.title}
+                                                                className="text-[0.95rem] text-slate-600 hover:text-emerald-700 hover:bg-emerald-50/80 px-5 py-3 rounded-2xl transition-all duration-300 flex items-center justify-between group/item"
                                                             >
-                                                                <span className="w-1.5 h-1.5 rounded-full bg-secondary-200 mr-2 group-hover/item:bg-secondary-500 transition-colors" />
-                                                                {mol.title}
+                                                                <span className="font-bold">{mol.title}</span>
+                                                                <ArrowRight size={16} className="opacity-0 -translate-x-3 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all text-emerald-400" />
                                                             </Link>
                                                         </motion.div>
                                                     ))}
                                                 </div>
                                             </div>
-
                                         </div>
                                     </motion.div>
                                 )}
                             </AnimatePresence>
                         </div>
 
-                        <Link href="/bioanalysis-pathology" className="relative group py-2 hover:text-primary-600 transition-colors">
+                        <Link
+                            href="/bioanalysis-pathology"
+                            className="px-6 py-2.5 rounded-full hover:text-indigo-600 hover:bg-white transition-all duration-500"
+                        >
                             Bioanalysis
-                            <motion.span
-                                className="absolute bottom-0 left-0 w-full h-0.5 bg-primary-600 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"
-                            />
                         </Link>
                     </nav>
 
-                    {/* Desktop Actions */}
-                    <div className="hidden lg:flex items-center gap-4">
-                        <motion.div
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
+                    {/* Actions */}
+                    <div className="flex items-center gap-4">
+                        <Link
+                            href="/contact"
+                            className="hidden md:flex bg-slate-900 shadow-xl shadow-slate-900/10 text-white px-8 py-3 rounded-xl font-black text-sm uppercase tracking-widest hover:bg-indigo-600 hover:shadow-indigo-500/30 active:scale-95 transition-all duration-500"
                         >
-                            <Link href="/contact" className="px-6 py-2.5 rounded-full bg-primary-900 border border-primary-900 text-white font-bold hover:bg-primary-800 hover:shadow-lg hover:shadow-primary-900/20 transition-all duration-300">
-                                Contact Us
-                            </Link>
-                        </motion.div>
-                    </div>
+                            Initiate Inquiry
+                        </Link>
 
-                    {/* Mobile Menu Toggle */}
-                    <button className="lg:hidden p-2 text-slate-600" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-                        {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                    </button>
-                </div>
-            </header>
+                        {/* Mobile Toggle */}
+                        <button
+                            className="lg:hidden w-11 h-11 flex items-center justify-center rounded-2xl bg-slate-900 text-white shadow-xl shadow-slate-900/20 active:scale-90 transition-all"
+                            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                        >
+                            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+                        </button>
+                    </div>
+                </header>
+            </div>
 
             {/* Mobile Nav Overlay */}
             <AnimatePresence>
                 {mobileMenuOpen && (
                     <motion.div
-                        initial={{ opacity: 0, height: 0, y: -20 }}
-                        animate={{ opacity: 1, height: 'auto', y: 0 }}
-                        exit={{ opacity: 0, height: 0, y: -20 }}
-                        transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
-                        className="lg:hidden bg-white/95 backdrop-blur-xl border-b border-slate-200 overflow-y-auto max-h-[85vh] shadow-2xl"
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
+                        className="fixed inset-0 z-[60] lg:hidden bg-slate-50 overflow-y-auto"
                     >
-                        <div className="px-5 py-10 flex flex-col space-y-8">
-                            {/* Main Pages */}
-                            <div className="flex flex-col space-y-1">
-                                {['Home', 'About', 'Facility', 'Bioanalysis'].map((item, idx) => (
+                        <div className="min-h-screen flex flex-col p-8">
+                            <div className="flex justify-between items-center mb-16">
+                                <Link href="/" className="flex items-center gap-3">
+                                    <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-black">AL</div>
+                                    <span className="font-black text-xl tracking-tighter">Altox Labs</span>
+                                </Link>
+                                <button onClick={() => setMobileMenuOpen(false)} className="w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-slate-900 active:scale-90 transition-all"><X size={24} /></button>
+                            </div>
+
+                            <div className="flex flex-col space-y-2">
+                                {['Home', 'About', 'Facility', 'Bioanalysis', 'Services'].map((item, idx) => (
                                     <motion.div
                                         key={item}
-                                        initial={{ opacity: 0, x: -20 }}
+                                        initial={{ opacity: 0, x: -30 }}
                                         animate={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: idx * 0.05 }}
+                                        transition={{ delay: 0.1 + (idx * 0.08), duration: 0.6, ease: "easeOut" }}
                                     >
                                         <Link
-                                            href={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`}
+                                            href={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
                                             onClick={() => setMobileMenuOpen(false)}
-                                            className="text-2xl font-black text-slate-800 hover:text-primary-600 transition-colors py-3 block border-b border-slate-50"
+                                            className="text-5xl font-black text-slate-900 hover:text-indigo-600 transition-colors py-6 block border-b border-slate-200/50 flex items-center justify-between group"
                                         >
                                             {item}
+                                            <ArrowRight size={32} className="opacity-20 group-hover:opacity-100 transition-opacity -translate-x-4 group-hover:translate-x-0 transition-transform" />
                                         </Link>
                                     </motion.div>
                                 ))}
                             </div>
 
-                            <div className="h-px bg-slate-100" />
-
-                            {/* Services Section */}
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 0.3 }}
-                            >
-                                <Link href="/services" onClick={() => setMobileMenuOpen(false)} className="text-xl font-black text-primary-900 mb-6 block bg-primary-50 px-4 py-3 rounded-2xl">
-                                    Services Overview
+                            <div className="mt-auto pt-20">
+                                <Link
+                                    href="/contact"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="block w-full text-center py-7 bg-indigo-600 text-white rounded-3xl font-black text-2xl shadow-[0_20px_60px_rgba(79,70,229,0.4)] active:scale-95 transition-all"
+                                >
+                                    Work With Us
                                 </Link>
-
-                                <div className="space-y-8 pl-2">
-                                    <div>
-                                        <h4 className="font-bold text-slate-400 uppercase text-[0.65rem] tracking-widest mb-4 flex items-center">
-                                            <span className="w-8 h-px bg-slate-200 mr-3" /> By Modality
-                                        </h4>
-                                        <div className="grid grid-cols-1 gap-2 pl-4 border-l-2 border-primary-100">
-                                            {servicesData.map((s, idx) => (
-                                                <motion.div
-                                                    key={s.slug}
-                                                    initial={{ opacity: 0, x: -10 }}
-                                                    animate={{ opacity: 1, x: 0 }}
-                                                    transition={{ delay: 0.4 + (idx * 0.02) }}
-                                                >
-                                                    <Link href={`/services/${s.slug}`} onClick={() => setMobileMenuOpen(false)} className="text-sm py-2 text-slate-600 flex items-center group">
-                                                        <span className="w-1.5 h-1.5 rounded-full bg-primary-100 mr-3 group-hover:bg-primary-500 transition-colors" />
-                                                        {s.title}
-                                                    </Link>
-                                                </motion.div>
-                                            ))}
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <h4 className="font-bold text-slate-400 uppercase text-[0.65rem] tracking-widest mb-4 flex items-center">
-                                            <span className="w-8 h-px bg-slate-200 mr-3" /> By Molecule
-                                        </h4>
-                                        <div className="grid grid-cols-1 gap-2 pl-4 border-l-2 border-secondary-100">
-                                            {moleculesData.map((m, idx) => (
-                                                <motion.div
-                                                    key={m.slug}
-                                                    initial={{ opacity: 0, x: -10 }}
-                                                    animate={{ opacity: 1, x: 0 }}
-                                                    transition={{ delay: 0.5 + (idx * 0.02) }}
-                                                >
-                                                    <Link href={`/molecules/${m.slug}`} onClick={() => setMobileMenuOpen(false)} className="text-sm py-2 text-slate-600 flex items-center group">
-                                                        <span className="w-1.5 h-1.5 rounded-full bg-secondary-100 mr-3 group-hover:bg-secondary-500 transition-colors" />
-                                                        {m.title}
-                                                    </Link>
-                                                </motion.div>
-                                            ))}
-                                        </div>
-                                    </div>
+                                <div className="mt-8 flex justify-center gap-10 text-slate-400 font-bold uppercase text-xs tracking-widest">
+                                    <span>Instagram</span>
+                                    <span>LinkedIn</span>
+                                    <span>Twitter</span>
                                 </div>
-                            </motion.div>
-
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.7 }}
-                                className="pt-6"
-                            >
-                                <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="block w-full text-center py-5 bg-gradient-to-r from-primary-900 to-primary-800 text-white rounded-[2rem] font-bold text-lg shadow-xl shadow-primary-900/20 active:scale-95 transition-transform">
-                                    Contact Us
-                                </Link>
-                            </motion.div>
+                            </div>
                         </div>
                     </motion.div>
                 )}

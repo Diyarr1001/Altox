@@ -1,111 +1,123 @@
 import Link from 'next/link';
-import { Mail, Phone, MapPin, Linkedin, Twitter, ArrowRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Twitter, ArrowUpRight, Youtube, Instagram } from 'lucide-react';
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="bg-slate-900 border-t border-slate-800 pt-16 pb-8 relative overflow-hidden">
-            {/* Background Graphic */}
-            <div className="absolute top-0 right-0 w-96 h-96 bg-primary-900 opacity-20 rounded-full blur-[100px] pointer-events-none"></div>
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary-900 opacity-10 rounded-full blur-[100px] pointer-events-none"></div>
+        <footer className="bg-slate-50 border-t border-slate-200 pt-24 pb-12 relative overflow-hidden">
+            {/* Minimalist Grid Pattern */}
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#4f46e5 0.5px, transparent 0.5px)', backgroundSize: '24px 24px' }}></div>
 
-            <div className="container mx-auto px-4 relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+            <div className="container mx-auto px-6 relative z-10">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-20">
 
-                    {/* Company Info */}
-                    <div>
-                        <Link href="/" className="inline-flex items-center gap-2 mb-6">
-                            <div className="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-lg shrink-0">
+                    {/* Brand & Mission */}
+                    <div className="lg:col-span-5">
+                        <Link href="/" className="inline-flex items-center gap-3 mb-8 group">
+                            <div className="w-10 h-10 bg-slate-900 rounded-xl flex items-center justify-center text-white font-black text-lg group-hover:bg-indigo-600 transition-colors duration-500">
                                 AL
                             </div>
-                            <div className="text-white">
-                                <div className="font-extrabold text-xl leading-none">Altox Labs</div>
-                                <div className="text-[0.6rem] tracking-widest text-secondary-400 font-semibold uppercase mt-1">Solutions through Sciences</div>
-                            </div>
+                            <span className="font-black text-2xl text-slate-900 tracking-tighter">Altox Labs</span>
                         </Link>
-                        <p className="text-slate-400 text-sm mb-6 leading-relaxed">
-                            Advancing safety and accelerating innovation with state-of-the-art GLP-ready facilities for global life science industries.
+                        <p className="text-slate-500 text-lg leading-relaxed max-w-md mb-10">
+                            Setting the standard in preclinical excellence. We provide precision toxicity assessments and innovative scientific solutions for the global life sciences industry.
                         </p>
-                        <div className="flex space-x-4">
-                            <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-primary-600 hover:text-white transition cursor-pointer">
-                                <Linkedin size={18} />
-                            </a>
-                            <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-primary-600 hover:text-white transition cursor-pointer">
-                                <Twitter size={18} />
-                            </a>
+                        <div className="flex gap-4">
+                            {[
+                                { icon: <Linkedin size={20} />, label: 'LinkedIn' },
+                                { icon: <Twitter size={20} />, label: 'Twitter' },
+                                { icon: <Instagram size={20} />, label: 'Instagram' },
+                                { icon: <Youtube size={20} />, label: 'YouTube' }
+                            ].map((social, idx) => (
+                                <a
+                                    key={idx}
+                                    href="#"
+                                    className="w-12 h-12 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:text-indigo-600 hover:border-indigo-200 hover:shadow-lg hover:shadow-indigo-500/5 transition-all duration-300 group"
+                                    aria-label={social.label}
+                                >
+                                    <span className="group-hover:scale-110 transition-transform">{social.icon}</span>
+                                </a>
+                            ))}
                         </div>
                     </div>
 
-                    {/* Quick Links */}
-                    <div>
-                        <h4 className="text-white font-semibold mb-6 flex items-center gap-2">
-                            <div className="w-1 h-4 bg-secondary-500 rounded-full"></div>
-                            Company
-                        </h4>
-                        <ul className="space-y-3">
-                            <li><Link href="/about" className="text-slate-400 hover:text-secondary-400 transition text-sm flex items-center gap-2 group"><ArrowRight size={14} className="text-slate-600 group-hover:text-secondary-400 transition-colors" /> About Us</Link></li>
-                            <li><Link href="/facility" className="text-slate-400 hover:text-secondary-400 transition text-sm flex items-center gap-2 group"><ArrowRight size={14} className="text-slate-600 group-hover:text-secondary-400 transition-colors" /> Facility & Compliance</Link></li>
-                            <li><Link href="/contact" className="text-slate-400 hover:text-secondary-400 transition text-sm flex items-center gap-2 group"><ArrowRight size={14} className="text-slate-600 group-hover:text-secondary-400 transition-colors" /> Careers</Link></li>
-                            <li><Link href="/privacy-policy" className="text-slate-400 hover:text-secondary-400 transition text-sm flex items-center gap-2 group"><ArrowRight size={14} className="text-slate-600 group-hover:text-secondary-400 transition-colors" /> Privacy Policy</Link></li>
-                        </ul>
-                    </div>
+                    {/* Navigation Columns */}
+                    <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-10">
+                        {/* Company */}
+                        <div>
+                            <h4 className="text-[0.65rem] font-black text-slate-400 uppercase tracking-[0.2em] mb-8">Platform</h4>
+                            <ul className="space-y-4">
+                                {['Home', 'About Us', 'Facility', 'Careers', 'Contact'].map((item) => (
+                                    <li key={item}>
+                                        <Link href={`/${item.toLowerCase().replace(' ', '-')}`} className="text-slate-600 hover:text-indigo-600 font-bold transition-colors flex items-center group">
+                                            {item}
+                                            <ArrowUpRight size={14} className="ml-1 opacity-0 group-hover:opacity-100 transition-all -translate-y-1" />
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
 
-                    {/* Services Links */}
-                    <div>
-                        <h4 className="text-white font-semibold mb-6 flex items-center gap-2">
-                            <div className="w-1 h-4 bg-secondary-500 rounded-full"></div>
-                            Scientific Services
-                        </h4>
-                        <ul className="space-y-3">
-                            <li><Link href="/services#toxicology" className="text-slate-400 hover:text-secondary-400 transition text-sm flex items-center gap-2 group"><ArrowRight size={14} className="text-slate-600 group-hover:text-secondary-400 transition-colors" /> General Toxicology</Link></li>
-                            <li><Link href="/services#genetic" className="text-slate-400 hover:text-secondary-400 transition text-sm flex items-center gap-2 group"><ArrowRight size={14} className="text-slate-600 group-hover:text-secondary-400 transition-colors" /> Genetic Toxicology</Link></li>
-                            <li><Link href="/bioanalysis-pathology" className="text-slate-400 hover:text-secondary-400 transition text-sm flex items-center gap-2 group"><ArrowRight size={14} className="text-slate-600 group-hover:text-secondary-400 transition-colors" /> Bioanalytical Testing</Link></li>
-                            <li><Link href="/routes-of-administration" className="text-slate-400 hover:text-secondary-400 transition text-sm flex items-center gap-2 group"><ArrowRight size={14} className="text-slate-600 group-hover:text-secondary-400 transition-colors" /> Routes of Admin</Link></li>
-                            <li><Link href="/test-species" className="text-slate-400 hover:text-secondary-400 transition text-sm flex items-center gap-2 group"><ArrowRight size={14} className="text-slate-600 group-hover:text-secondary-400 transition-colors" /> Test Species</Link></li>
-                        </ul>
-                    </div>
+                        {/* Services */}
+                        <div>
+                            <h4 className="text-[0.65rem] font-black text-slate-400 uppercase tracking-[0.2em] mb-8">Solutions</h4>
+                            <ul className="space-y-4">
+                                {[
+                                    { label: 'Toxicology', path: '/services#toxicology' },
+                                    { label: 'Bioanalysis', path: '/bioanalysis-pathology' },
+                                    { label: 'Genetic Tox', path: '/services#genetic' },
+                                    { label: 'In Vitro', path: '/services#in-vitro' },
+                                    { label: 'Test Species', path: '/test-species' }
+                                ].map((item) => (
+                                    <li key={item.label}>
+                                        <Link href={item.path} className="text-slate-600 hover:text-indigo-600 font-bold transition-colors flex items-center group">
+                                            {item.label}
+                                            <ArrowUpRight size={14} className="ml-1 opacity-0 group-hover:opacity-100 transition-all -translate-y-1" />
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
 
-                    {/* Contact Details */}
-                    <div>
-                        <h4 className="text-white font-semibold mb-6 flex items-center gap-2">
-                            <div className="w-1 h-4 bg-secondary-500 rounded-full"></div>
-                            Contact Us
-                        </h4>
-                        <ul className="space-y-4">
-                            <li className="flex items-start gap-3">
-                                <MapPin size={18} className="text-secondary-400 mt-0.5 shrink-0" />
-                                <span className="text-slate-400 text-sm leading-relaxed">
-                                    M. No. 67, Nande, Taluka: Mulshi<br />
-                                    District: Pune, Maharashtra – 412115<br />
-                                    India
-                                </span>
-                            </li>
-                            <li className="flex items-center gap-3">
-                                <Phone size={18} className="text-secondary-400 shrink-0" />
-                                <a href="tel:+919403136585" className="text-slate-400 hover:text-secondary-400 transition text-sm">
-                                    +91 9403136585
-                                </a>
-                            </li>
-                            <li className="flex items-center gap-3">
-                                <Mail size={18} className="text-secondary-400 shrink-0" />
-                                <a href="mailto:altoxlabs@gmail.com" className="text-slate-400 hover:text-secondary-400 transition text-sm">
-                                    altoxlabs@gmail.com
-                                </a>
-                            </li>
-                        </ul>
+                        {/* Contact */}
+                        <div className="col-span-2 md:col-span-1">
+                            <h4 className="text-[0.65rem] font-black text-slate-400 uppercase tracking-[0.2em] mb-8">Location</h4>
+                            <address className="not-italic space-y-6">
+                                <div className="flex gap-3">
+                                    <MapPin size={20} className="text-indigo-500 shrink-0 mt-1" />
+                                    <p className="text-slate-500 text-sm leading-relaxed font-medium">
+                                        Nande, Taluka: Mulshi,<br />
+                                        Pune, Maharashtra<br />
+                                        India – 412115
+                                    </p>
+                                </div>
+                                <div className="space-y-3">
+                                    <a href="mailto:altoxlabs@gmail.com" className="flex items-center gap-3 text-slate-600 hover:text-indigo-600 font-bold transition-colors group text-sm">
+                                        <Mail size={18} className="text-indigo-400" />
+                                        altoxlabs@gmail.com
+                                    </a>
+                                    <a href="tel:+919403136585" className="flex items-center gap-3 text-slate-600 hover:text-indigo-600 font-bold transition-colors group text-sm">
+                                        <Phone size={18} className="text-indigo-400" />
+                                        +91 9403136585
+                                    </a>
+                                </div>
+                            </address>
+                        </div>
                     </div>
-
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p className="text-slate-500 text-xs text-center md:text-left">
-                        &copy; {currentYear} Altox Labs LLP. All rights reserved.
-                    </p>
-                    <div className="flex gap-6 text-xs text-slate-500">
-                        <Link href="/terms" className="hover:text-secondary-400 transition">Terms of Service</Link>
-                        <Link href="/privacy" className="hover:text-secondary-400 transition">Privacy Policy</Link>
+                <div className="pt-10 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div className="flex items-center gap-2 text-slate-400 font-bold text-xs tracking-widest uppercase">
+                        <span>&copy; {currentYear} Altox Labs LLP</span>
+                        <span className="w-1 h-1 rounded-full bg-slate-200"></span>
+                        <span className="text-slate-300">ISO 9001:2015</span>
+                    </div>
+                    <div className="flex gap-8 text-xs font-black text-slate-400 uppercase tracking-widest">
+                        <Link href="/privacy" className="hover:text-indigo-600 transition-colors">Privacy</Link>
+                        <Link href="/terms" className="hover:text-indigo-600 transition-colors">Terms</Link>
+                        <Link href="/cookies" className="hover:text-indigo-600 transition-colors">Cookies</Link>
                     </div>
                 </div>
             </div>
