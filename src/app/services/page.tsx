@@ -8,7 +8,7 @@ import { moleculesData } from '@/data/molecules';
 
 export default function Services() {
     return (
-        <div className="w-full bg-white selection:bg-indigo-100 selection:text-indigo-900">
+        <div className="w-full bg-transparent selection:bg-indigo-100 selection:text-indigo-900">
             {/* Page Header (Mesh Gradient) */}
             <section className="relative pt-40 pb-32 overflow-hidden bg-mesh">
                 <div className="container mx-auto px-6 relative z-10 text-center">
@@ -130,7 +130,7 @@ export default function Services() {
             </section>
 
             {/* Final CTA (Mesh Style) */}
-            <section className="py-40 bg-white relative overflow-hidden text-center">
+            <section className="py-40 bg-transparent relative overflow-hidden text-center">
                 <div className="container mx-auto px-6 relative z-10">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}

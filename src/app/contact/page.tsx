@@ -42,7 +42,7 @@ export default function Contact() {
     };
 
     return (
-        <div className="w-full bg-white selection:bg-indigo-100 selection:text-indigo-900">
+        <div className="w-full bg-transparent selection:bg-indigo-100 selection:text-indigo-900">
             {/* Page Header (Mesh Gradient) */}
             <section className="relative pt-40 pb-32 overflow-hidden bg-mesh">
                 <div className="container mx-auto px-6 relative z-10 text-center">
@@ -75,7 +75,7 @@ export default function Contact() {
             </section>
 
             {/* Main Content */}
-            <section className="py-32 bg-white relative">
+            <section className="py-32 bg-transparent relative">
                 <div className="container mx-auto px-6 max-w-7xl">
                     <div className="flex flex-col lg:flex-row gap-20">
 

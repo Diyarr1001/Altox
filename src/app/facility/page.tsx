@@ -5,7 +5,7 @@ import { Building2, Microscope, ShieldCheck, PawPrint, Eye, Layers, Wind, Activi
 
 export default function Facility() {
     return (
-        <div className="w-full bg-white selection:bg-indigo-100 selection:text-indigo-900">
+        <div className="w-full bg-transparent selection:bg-indigo-100 selection:text-indigo-900">
             {/* Page Header (Mesh Gradient) */}
             <section className="relative pt-40 pb-32 overflow-hidden bg-mesh">
                 <div className="container mx-auto px-6 relative z-10 text-center">
@@ -38,7 +38,7 @@ export default function Facility() {
             </section>
 
             {/* Infrastructure Overview (Clean Layout) */}
-            <section className="py-32 bg-white relative z-20">
+            <section className="py-32 bg-transparent relative z-20">
                 <div className="container mx-auto px-6">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                         <motion.div
@@ -146,7 +146,7 @@ export default function Facility() {
             </section>
 
             {/* Certifications (Premium Grid) */}
-            <section className="py-32 bg-white relative">
+            <section className="py-32 bg-transparent relative">
                 <div className="container mx-auto px-6">
                     <div className="text-center max-w-3xl mx-auto mb-20">
                         <span className="text-indigo-600 font-black tracking-[0.25em] uppercase text-[0.7rem] mb-6 block">Our Standards</span>

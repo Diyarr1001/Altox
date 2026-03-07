@@ -25,19 +25,19 @@
 
 @layer utilities {
   .glass-card {
-    @apply bg-white/70 backdrop-blur-xl border border-white/20 shadow-xl ring-1 ring-black/5;
+    @apply bg-white/40 backdrop-blur-2xl border border-white/40 shadow-[0_8px_32px_0_rgba(31, 38, 135, 0.07)] ring-1 ring-white/20;
   }
 
   .glass-dark {
-    @apply bg-slate-900/40 backdrop-blur-xl border border-white/10 shadow-2xl;
+    @apply bg-slate-900/60 backdrop-blur-2xl border border-white/5 shadow-2xl;
   }
 
   .bg-mesh {
     background-color: #f8fafc;
     background-image:
-      radial-gradient(at 0% 0%, hsla(217, 100%, 97%, 1) 0, transparent 50%),
-      radial-gradient(at 50% 0%, hsla(225, 100%, 96%, 1) 0, transparent 50%),
-      radial-gradient(at 100% 0%, hsla(220, 100%, 97%, 1) 0, transparent 50%);
+      radial-gradient(at 0% 0%, hsla(217, 100%, 98%, 1) 0, transparent 50%),
+      radial-gradient(at 50% 0%, hsla(225, 100%, 97%, 1) 0, transparent 50%),
+      radial-gradient(at 100% 0%, hsla(220, 100%, 98%, 1) 0, transparent 50%);
   }
 
   .text-balance {
@@ -46,7 +46,7 @@
 }
 
 :root {
-  background-color: #ffffff;
+  background-color: #f8fafc;
   color: #0f172a;
   scroll-behavior: smooth;
 }

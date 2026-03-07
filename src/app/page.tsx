@@ -57,7 +57,7 @@ export default function Home() {
   const opacityBg = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
   return (
-    <div className="w-full bg-white overflow-hidden selection:bg-indigo-100 selection:text-indigo-900">
+    <div className="w-full bg-transparent overflow-hidden selection:bg-indigo-100 selection:text-indigo-900">
 
       {/* ================= HERO SECTION (Mesh Gradient + Apple Style) ================= */}
       <section ref={heroRef} className="relative min-h-[90vh] flex items-center pt-32 pb-20 overflow-hidden bg-mesh">
@@ -133,7 +133,7 @@ export default function Home() {
       </section>
 
       {/* ================= STATISTICS (Sleek & Centered) ================= */}
-      <section className="py-24 bg-white relative z-20">
+      <section className="py-24 bg-transparent relative z-20">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 max-w-6xl mx-auto">
             {[
