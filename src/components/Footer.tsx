@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import { Mail, Phone, MapPin, Linkedin, Twitter, ArrowUpRight, Youtube, Instagram } from 'lucide-react';
 import { motion } from 'framer-motion';
