@@ -361,7 +361,7 @@ export default function Home() {
       </section>
 
       {/* ================= ULTRA CTA ================= */}
-      <section className="py-40 relative overflow-hidden bg-white">
+      {/* <section className="py-40 relative overflow-hidden bg-white">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
         <div className="container mx-auto px-4 text-center z-10 relative">
           <motion.div initial={{ scale: 0.8, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once: true }} transition={{ type: "spring", bounce: 0.5 }}>
@@ -372,7 +372,7 @@ export default function Home() {
             </Link>
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* ================= MOLECULES OVERVIEW ================= */}
       <section className="py-40 bg-slate-50">
