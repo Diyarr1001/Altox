@@ -1,179 +1,114 @@
-'use client';
-
 import Link from 'next/link';
-import { Mail, Phone, MapPin, Linkedin, Twitter, ArrowUpRight, Youtube, Instagram } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { Mail, Phone, MapPin, Linkedin, Twitter, ArrowRight } from 'lucide-react';
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
 
-    const footerLinks = {
-        platform: ['Home', 'About Us', 'Facility', 'Careers', 'Contact'],
-        solutions: [
-            { label: 'Toxicology', path: '/services#toxicology' },
-            { label: 'Bioanalysis', path: '/bioanalysis-pathology' },
-            { label: 'Genetic Tox', path: '/services#genetic' },
-            { label: 'In Vitro', path: '/services#in-vitro' },
-            { label: 'Test Species', path: '/test-species' }
-        ]
-    };
-
     return (
-        <footer className="bg-white border-t border-slate-200/60 pt-32 pb-16 relative overflow-hidden">
-            {/* Architectural Background Detail */}
-            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent"></div>
+        <footer className="bg-slate-900 border-t border-slate-800 pt-16 pb-8 relative overflow-hidden">
+            {/* Background Graphic */}
+            <div className="absolute top-0 right-0 w-96 h-96 bg-primary-900 opacity-20 rounded-full blur-[100px] pointer-events-none"></div>
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary-900 opacity-10 rounded-full blur-[100px] pointer-events-none"></div>
 
-            <div className="container mx-auto px-8 md:px-12 relative z-10">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 mb-32">
+            <div className="container mx-auto px-4 relative z-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
 
-                    {/* Brand & Mission - High Impact */}
-                    <div className="lg:col-span-5">
-                        <Link href="/" className="inline-flex items-center gap-4 mb-10 group">
-                            <motion.div
-                                whileHover={{ rotate: 10, scale: 1.1 }}
-                                className="w-12 h-12 bg-slate-950 rounded-2xl flex items-center justify-center text-white font-black text-xl group-hover:bg-indigo-600 transition-colors duration-500 shadow-xl shadow-slate-900/10"
-                            >
+                    {/* Company Info */}
+                    <div>
+                        <Link href="/" className="inline-flex items-center gap-2 mb-6">
+                            <div className="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-lg shrink-0">
                                 AL
-                            </motion.div>
-                            <span className="font-black text-3xl text-slate-950 tracking-tighter">Altox Labs</span>
+                            </div>
+                            <div className="text-white">
+                                <div className="font-extrabold text-xl leading-none">Altox Labs</div>
+                                <div className="text-[0.6rem] tracking-widest text-secondary-400 font-semibold uppercase mt-1">Solutions through Sciences</div>
+                            </div>
                         </Link>
-                        <p className="text-slate-500 text-xl leading-relaxed max-w-md mb-12 font-medium">
-                            The benchmark in preclinical research. Delivering precision, integrity, and scientific innovation for the global pharmaceutical landscape.
+                        <p className="text-slate-400 text-sm mb-6 leading-relaxed">
+                            Advancing safety and accelerating innovation with state-of-the-art GLP-ready facilities for global life science industries.
                         </p>
-                        <div className="flex gap-4">
-                            {[
-                                { icon: <Linkedin size={22} />, label: 'LinkedIn' },
-                                { icon: <Twitter size={22} />, label: 'Twitter' },
-                                { icon: <Instagram size={22} />, label: 'Instagram' },
-                                { icon: <Youtube size={22} />, label: 'YouTube' }
-                            ].map((social, idx) => (
-                                <motion.a
-                                    key={idx}
-                                    href="#"
-                                    whileHover={{ y: -5, scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className="w-14 h-14 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-600 hover:text-indigo-600 hover:border-indigo-100 hover:bg-white hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-300 group"
-                                    aria-label={social.label}
-                                >
-                                    <span className="transition-transform duration-500 group-hover:scale-110">{social.icon}</span>
-                                </motion.a>
-                            ))}
+                        <div className="flex space-x-4">
+                            <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-primary-600 hover:text-white transition cursor-pointer">
+                                <Linkedin size={18} />
+                            </a>
+                            <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:bg-primary-600 hover:text-white transition cursor-pointer">
+                                <Twitter size={18} />
+                            </a>
                         </div>
                     </div>
 
-                    {/* Navigation Columns - Structured & Clean */}
-                    <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-12 lg:gap-20">
-                        {/* Platform */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                        >
-                            <h4 className="text-[0.7rem] font-black text-indigo-600 uppercase tracking-[0.3em] mb-10">Platform</h4>
-                            <ul className="space-y-6">
-                                {footerLinks.platform.map((item) => (
-                                    <li key={item}>
-                                        <Link
-                                            href={`/${item.toLowerCase().replace(' ', '-')}`}
-                                            className="text-slate-600 hover:text-indigo-600 font-black text-lg transition-all duration-300 flex items-center group"
-                                        >
-                                            <span className="relative overflow-hidden">
-                                                {item}
-                                                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-indigo-600 -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></span>
-                                            </span>
-                                            <ArrowUpRight size={18} className="ml-2 opacity-0 group-hover:opacity-100 transition-all -translate-y-1" />
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </motion.div>
-
-                        {/* Solutions */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.1 }}
-                        >
-                            <h4 className="text-[0.7rem] font-black text-emerald-600 uppercase tracking-[0.3em] mb-10">Solutions</h4>
-                            <ul className="space-y-6">
-                                {footerLinks.solutions.map((item) => (
-                                    <li key={item.label}>
-                                        <Link
-                                            href={item.path}
-                                            className="text-slate-600 hover:text-emerald-600 font-black text-lg transition-all duration-300 flex items-center group"
-                                        >
-                                            <span className="relative overflow-hidden">
-                                                {item.label}
-                                                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-emerald-500 -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></span>
-                                            </span>
-                                            <ArrowUpRight size={18} className="ml-2 opacity-0 group-hover:opacity-100 transition-all -translate-y-1" />
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </motion.div>
-
-                        {/* Location & Contact */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.2 }}
-                            className="col-span-2 md:col-span-1"
-                        >
-                            <h4 className="text-[0.7rem] font-black text-slate-400 uppercase tracking-[0.3em] mb-10">Headquarters</h4>
-                            <address className="not-italic space-y-8">
-                                <div className="flex gap-4">
-                                    <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-indigo-500 shrink-0 border border-slate-100">
-                                        <MapPin size={20} />
-                                    </div>
-                                    <p className="text-slate-500 text-lg leading-relaxed font-bold">
-                                        Nande, Mulshi,<br />
-                                        Pune, Maharashtra<br />
-                                        India – 412115
-                                    </p>
-                                </div>
-                                <div className="space-y-5">
-                                    <a href="mailto:altoxlabs@gmail.com" className="flex items-center gap-4 text-slate-800 hover:text-indigo-600 font-black transition-all group lg:text-lg">
-                                        <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-500 group-hover:bg-indigo-600 group-hover:text-white transition-all">
-                                            <Mail size={18} />
-                                        </div>
-                                        altoxlabs@gmail.com
-                                    </a>
-                                    <a href="tel:+919403136585" className="flex items-center gap-4 text-slate-800 hover:text-indigo-600 font-black transition-all group lg:text-lg">
-                                        <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-500 group-hover:bg-indigo-600 group-hover:text-white transition-all">
-                                            <Phone size={18} />
-                                        </div>
-                                        +91 9403136585
-                                    </a>
-                                </div>
-                            </address>
-                        </motion.div>
+                    {/* Quick Links */}
+                    <div>
+                        <h4 className="text-white font-semibold mb-6 flex items-center gap-2">
+                            <div className="w-1 h-4 bg-secondary-500 rounded-full"></div>
+                            Company
+                        </h4>
+                        <ul className="space-y-3">
+                            <li><Link href="/about" className="text-slate-400 hover:text-secondary-400 transition text-sm flex items-center gap-2 group"><ArrowRight size={14} className="text-slate-600 group-hover:text-secondary-400 transition-colors" /> About Us</Link></li>
+                            <li><Link href="/facility" className="text-slate-400 hover:text-secondary-400 transition text-sm flex items-center gap-2 group"><ArrowRight size={14} className="text-slate-600 group-hover:text-secondary-400 transition-colors" /> Facility & Compliance</Link></li>
+                            <li><Link href="/contact" className="text-slate-400 hover:text-secondary-400 transition text-sm flex items-center gap-2 group"><ArrowRight size={14} className="text-slate-600 group-hover:text-secondary-400 transition-colors" /> Careers</Link></li>
+                            <li><Link href="/privacy-policy" className="text-slate-400 hover:text-secondary-400 transition text-sm flex items-center gap-2 group"><ArrowRight size={14} className="text-slate-600 group-hover:text-secondary-400 transition-colors" /> Privacy Policy</Link></li>
+                        </ul>
                     </div>
+
+                    {/* Services Links */}
+                    <div>
+                        <h4 className="text-white font-semibold mb-6 flex items-center gap-2">
+                            <div className="w-1 h-4 bg-secondary-500 rounded-full"></div>
+                            Scientific Services
+                        </h4>
+                        <ul className="space-y-3">
+                            <li><Link href="/services#toxicology" className="text-slate-400 hover:text-secondary-400 transition text-sm flex items-center gap-2 group"><ArrowRight size={14} className="text-slate-600 group-hover:text-secondary-400 transition-colors" /> General Toxicology</Link></li>
+                            <li><Link href="/services#genetic" className="text-slate-400 hover:text-secondary-400 transition text-sm flex items-center gap-2 group"><ArrowRight size={14} className="text-slate-600 group-hover:text-secondary-400 transition-colors" /> Genetic Toxicology</Link></li>
+                            <li><Link href="/bioanalysis-pathology" className="text-slate-400 hover:text-secondary-400 transition text-sm flex items-center gap-2 group"><ArrowRight size={14} className="text-slate-600 group-hover:text-secondary-400 transition-colors" /> Bioanalytical Testing</Link></li>
+                            <li><Link href="/routes-of-administration" className="text-slate-400 hover:text-secondary-400 transition text-sm flex items-center gap-2 group"><ArrowRight size={14} className="text-slate-600 group-hover:text-secondary-400 transition-colors" /> Routes of Admin</Link></li>
+                            <li><Link href="/test-species" className="text-slate-400 hover:text-secondary-400 transition text-sm flex items-center gap-2 group"><ArrowRight size={14} className="text-slate-600 group-hover:text-secondary-400 transition-colors" /> Test Species</Link></li>
+                        </ul>
+                    </div>
+
+                    {/* Contact Details */}
+                    <div>
+                        <h4 className="text-white font-semibold mb-6 flex items-center gap-2">
+                            <div className="w-1 h-4 bg-secondary-500 rounded-full"></div>
+                            Contact Us
+                        </h4>
+                        <ul className="space-y-4">
+                            <li className="flex items-start gap-3">
+                                <MapPin size={18} className="text-secondary-400 mt-0.5 shrink-0" />
+                                <span className="text-slate-400 text-sm leading-relaxed">
+                                    M. No. 67, Nande, Taluka: Mulshi<br />
+                                    District: Pune, Maharashtra – 412115<br />
+                                    India
+                                </span>
+                            </li>
+                            <li className="flex items-center gap-3">
+                                <Phone size={18} className="text-secondary-400 shrink-0" />
+                                <a href="tel:+919403136585" className="text-slate-400 hover:text-secondary-400 transition text-sm">
+                                    +91 9403136585
+                                </a>
+                            </li>
+                            <li className="flex items-center gap-3">
+                                <Mail size={18} className="text-secondary-400 shrink-0" />
+                                <a href="mailto:altoxlabs@gmail.com" className="text-slate-400 hover:text-secondary-400 transition text-sm">
+                                    altoxlabs@gmail.com
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
                 </div>
 
-                {/* Bottom Architectural Bar */}
-                <div className="pt-12 border-t border-slate-200/60 flex flex-col md:flex-row justify-between items-center gap-8">
-                    <div className="flex items-center gap-4 text-slate-400 font-black text-xs tracking-widest uppercase">
-                        <span>&copy; {currentYear} Altox Labs LLP</span>
-                        <div className="w-1 h-1 rounded-full bg-slate-300"></div>
-                        <span className="text-indigo-400/60">GLP & ISO 9001 Recognized</span>
-                    </div>
-                    <div className="flex gap-10 text-[0.65rem] font-black text-slate-500 uppercase tracking-[0.25em]">
-                        {['Privacy', 'Terms', 'Compliance'].map(item => (
-                            <Link key={item} href={`/${item.toLowerCase()}`} className="hover:text-indigo-600 transition-colors relative group">
-                                {item}
-                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 group-hover:w-full transition-all"></span>
-                            </Link>
-                        ))}
+                {/* Bottom Bar */}
+                <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p className="text-slate-500 text-xs text-center md:text-left">
+                        &copy; {currentYear} Altox Labs LLP. All rights reserved.
+                    </p>
+                    <div className="flex gap-6 text-xs text-slate-500">
+                        <Link href="/terms" className="hover:text-secondary-400 transition">Terms of Service</Link>
+                        <Link href="/privacy" className="hover:text-secondary-400 transition">Privacy Policy</Link>
                     </div>
                 </div>
             </div>
-
-            {/* Visual Flair */}
-            <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-indigo-500/5 rounded-full blur-[100px]"></div>
-            <div className="absolute -top-24 -right-24 w-64 h-64 bg-emerald-500/5 rounded-full blur-[100px]"></div>
         </footer>
     );
 }

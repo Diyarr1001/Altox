@@ -8,96 +8,78 @@ import { moleculesData } from '@/data/molecules';
 
 export default function Services() {
     return (
-        <div className="w-full bg-transparent selection:bg-indigo-100 selection:text-indigo-900">
-            {/* Page Header (Visual Impact) */}
-            <section className="relative pt-48 pb-40 overflow-hidden min-h-[80vh] flex items-center">
-                {/* Background Video Layer */}
-                <div className="absolute inset-0 z-0">
-                    <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-10 grayscale scale-105">
-                        <source src="https://assets.mixkit.co/videos/preview/mixkit-scientist-hand-putting-a-test-tube-on-a-rack-40101-large.mp4" type="video/mp4" />
-                    </video>
-                    <div className="absolute inset-0 bg-gradient-to-b from-slate-50/90 via-transparent to-slate-50"></div>
+        <div className="w-full bg-slate-50">
+            {/* Highly Visual Page Header */}
+            <section className="relative pt-32 pb-40 lg:pt-40 lg:pb-52 overflow-hidden bg-slate-900 border-b-[8px] border-primary-500">
+                <div className="absolute inset-0">
+                    <img src="https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?q=80&w=2070&auto=format&fit=crop" alt="Laboratory Background" className="w-full h-full object-cover opacity-30 mix-blend-overlay" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-primary-950/80 via-primary-900/60 to-slate-50"></div>
                 </div>
 
-                <div className="container mx-auto px-6 relative z-10 text-center">
+                <div className="container mx-auto px-4 relative z-10 text-center">
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-                        className="max-w-5xl mx-auto"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
                     >
-                        <motion.span
-                            initial={{ opacity: 0, y: -20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full glass-card border-indigo-200/50 text-indigo-700 text-[0.75rem] font-black mb-12 tracking-[0.3em] uppercase shadow-xl shadow-indigo-500/10"
-                        >
-                            <span className="relative flex h-2.5 w-2.5">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-indigo-600"></span>
-                            </span>
-                            Scientific Precision & Depth
-                        </motion.span>
-                        <h1 className="text-7xl md:text-[9.5rem] font-black text-slate-900 mb-12 tracking-[-0.06em] leading-[0.8] text-balance">
-                            Scientific <span className="bg-gradient-to-r from-indigo-600 via-blue-600 to-indigo-500 bg-clip-text text-transparent">Precision.</span>
+                        <span className="inline-block py-1 px-4 rounded-full bg-secondary-500/20 text-secondary-400 font-bold tracking-widest uppercase text-sm mb-6 border border-secondary-500/30">
+                            Our Capabilities
+                        </span>
+                        <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 drop-shadow-lg tracking-tight">
+                            Comprehensive <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary-300 to-secondary-500">Scientific</span> Services
                         </h1>
-                        <p className="text-2xl md:text-3xl text-slate-500/80 font-bold leading-tight max-w-4xl mx-auto tracking-tight">
-                            End-to-end <span className="text-slate-900">GLP-compliant</span> preclinical testing solutions tailored meticulously to your specific molecule and regulatory pathway.
+                        <p className="text-xl text-slate-200 max-w-3xl mx-auto font-light leading-relaxed">
+                            End-to-end GLP-compliant preclinical testing solutions tailored meticulously to your specific molecule and regulatory pathway.
                         </p>
                     </motion.div>
                 </div>
-
-                {/* Animated Background Gradients */}
-                <motion.div
-                    animate={{ scale: [1, 1.3, 1], rotate: [0, 45, 0] }}
-                    transition={{ duration: 15, repeat: Infinity }}
-                    className="absolute top-1/4 -right-1/4 w-[800px] h-[800px] bg-indigo-200/40 rounded-full blur-[140px] pointer-events-none"
-                />
-                <motion.div
-                    animate={{ scale: [1.2, 1, 1.2], rotate: [0, -45, 0] }}
-                    transition={{ duration: 20, repeat: Infinity }}
-                    className="absolute bottom-0 -left-1/4 w-[1000px] h-[1000px] bg-emerald-100/30 rounded-full blur-[160px] pointer-events-none"
-                />
             </section>
 
-            {/* Section 1: By Services (Grid Layout) */}
-            <section id="by-service" className="py-32 relative z-20">
-                <div className="container mx-auto px-6">
-                    <div className="text-center mb-24">
-                        <span className="text-indigo-600 font-black tracking-[0.25em] uppercase text-[0.7rem] mb-6 block">Service Modalities</span>
-                        <h2 className="text-5xl md:text-6xl font-black text-slate-900 tracking-tighter">Core Competencies</h2>
+            {/* Section 1: By Services Showcase (Grid Layout) */}
+            <section id="by-service" className="py-24 relative z-20 -mt-20">
+                <div className="container mx-auto px-4">
+                    <div className="text-center mb-16">
+                        <motion.h2
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="text-4xl lg:text-5xl font-extrabold text-slate-900 bg-white inline-block px-12 py-4 rounded-[2rem] shadow-xl border border-slate-100"
+                        >
+                            By Service Modality
+                        </motion.h2>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {servicesData.map((svc, idx) => (
                             <motion.div
                                 key={svc.slug}
                                 initial={{ opacity: 0, y: 40 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: "-50px" }}
-                                transition={{ delay: (idx % 3) * 0.1, duration: 0.8 }}
-                                className="bg-white rounded-[3rem] overflow-hidden shadow-2xl shadow-slate-900/5 border border-slate-100 group flex flex-col hover:-translate-y-2 transition-all duration-700"
+                                transition={{ delay: (idx % 3) * 0.1, duration: 0.6 }}
+                                className="bg-white rounded-[2rem] overflow-hidden shadow-lg shadow-slate-200/50 border border-slate-100 group flex flex-col hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
                             >
-                                <div className="h-72 relative overflow-hidden">
-                                    <img src={svc.image} alt={svc.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
-                                    <div className="absolute bottom-8 left-8">
-                                        <h3 className="text-2xl font-black text-white tracking-tight">{svc.title}</h3>
+                                <div className="h-56 relative overflow-hidden">
+                                    <img src={svc.image} alt={svc.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-primary-900/90 via-primary-900/20 to-transparent"></div>
+                                    <div className="absolute bottom-4 left-4 flex items-center gap-3 pr-4">
+                                        <h3 className="text-xl font-bold text-white leading-tight">{svc.title}</h3>
                                     </div>
                                 </div>
-                                <div className="p-10 flex flex-col flex-grow">
-                                    <p className="text-slate-500 font-bold leading-relaxed mb-8 flex-grow opacity-80 group-hover:opacity-100 transition-opacity">
+                                <div className="p-8 flex flex-col flex-grow">
+                                    <p className="text-slate-600 leading-relaxed mb-6 flex-grow">
                                         {svc.description}
                                     </p>
-                                    <div className="space-y-4 mb-10 pt-8 border-t border-slate-100">
+                                    <div className="space-y-3 mb-8 pt-6 border-t border-slate-100">
                                         {svc.features.slice(0, 3).map((feature, fIdx) => (
-                                            <div key={fIdx} className="flex items-start gap-3 text-sm text-slate-700 font-black">
-                                                <CheckCircle2 className="text-emerald-500 shrink-0 mt-0.5" size={18} />
+                                            <div key={fIdx} className="flex items-start gap-2 text-sm text-slate-700 font-medium line-clamp-2">
+                                                <CheckCircle2 className="text-secondary-500 shrink-0 mt-0.5" size={16} />
                                                 {feature}
                                             </div>
                                         ))}
                                     </div>
-                                    <Link href={`/services/${svc.slug}`} className="inline-flex items-center gap-2 text-indigo-600 font-black hover:text-indigo-700 transition group-hover:translate-x-1 duration-300">
-                                        Explore Methodology <ArrowRight size={18} />
+                                    <Link href={`/services/${svc.slug}`} className="inline-flex items-center gap-2 text-primary-700 font-bold hover:text-primary-800 transition group-hover:underline">
+                                        View Full Service Details <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                                     </Link>
                                 </div>
                             </motion.div>
@@ -106,67 +88,80 @@ export default function Services() {
                 </div>
             </section>
 
-            {/* Section 2: By Molecules (Horizontal Cards) */}
-            <section id="by-molecule" className="py-32 bg-slate-50 relative overflow-hidden">
-                <div className="container mx-auto px-6 max-w-7xl relative z-10">
-                    <div className="text-center mb-24">
-                        <span className="text-indigo-600 font-black tracking-[0.25em] uppercase text-[0.7rem] mb-6 block">Target Specificity</span>
-                        <h2 className="text-5xl md:text-6xl font-black text-slate-900 mb-8 tracking-tighter">By Molecule Type</h2>
-                        <p className="text-xl text-slate-500 font-bold max-w-2xl mx-auto leading-relaxed opacity-80">
-                            Customized testing grids ensure your specific molecule meets its precise global endpoint requirements.
-                        </p>
+            {/* Divider */}
+            <div className="container mx-auto px-4 py-8">
+                <hr className="border-slate-200 border-2 rounded-full" />
+            </div>
+
+            {/* Section 2: By Molecules Showcase (Horizontal Cards) */}
+            <section id="by-molecule" className="py-24 bg-slate-50">
+                <div className="container mx-auto px-4 max-w-6xl">
+                    <div className="text-center mb-20">
+                        <motion.span
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            className="text-primary-600 font-black tracking-widest uppercase text-sm mb-3 block"
+                        >
+                            Industry Focus
+                        </motion.span>
+                        <motion.h2
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="text-4xl lg:text-5xl font-extrabold text-slate-900 mb-6 bg-white inline-block px-12 py-4 rounded-[2rem] shadow-xl border border-slate-100"
+                        >
+                            By Target Molecule
+                        </motion.h2>
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.1 }}
+                            className="text-lg text-slate-600 max-w-2xl mx-auto mt-6"
+                        >
+                            We understand that every industry has unique regulatory demands. Our customized testing grids ensure your specific molecule meets its precise global endpoint requirements.
+                        </motion.p>
                     </div>
 
-                    <div className="space-y-16">
+                    <div className="space-y-12">
                         {moleculesData.map((mol, idx) => (
                             <motion.div
                                 key={mol.slug}
                                 initial={{ opacity: 0, y: 40 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: "-50px" }}
-                                transition={{ duration: 0.8 }}
-                                className={`flex flex-col ${idx % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} bg-white rounded-[4rem] overflow-hidden shadow-2xl shadow-slate-900/5 border border-slate-100 group hover:shadow-indigo-500/5 transition-all duration-700`}
+                                transition={{ duration: 0.7 }}
+                                className={`flex flex-col ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} bg-white rounded-[2.5rem] overflow-hidden shadow-xl border border-slate-100 group hover:shadow-2xl transition-all duration-500`}
                             >
-                                <div className="w-full lg:w-1/2 h-[400px] lg:h-auto relative overflow-hidden">
+                                <div className="w-full md:w-1/2 h-72 md:h-auto relative overflow-hidden">
                                     <img src={mol.image} alt={mol.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
-                                    <div className="absolute inset-0 bg-indigo-900/10 mix-blend-multiply group-hover:bg-indigo-900/0 transition-colors duration-700"></div>
+                                    <div className="absolute inset-0 bg-primary-900/20 mix-blend-multiply group-hover:bg-primary-900/10 transition-colors"></div>
                                 </div>
-                                <div className="w-full lg:w-1/2 p-16 lg:p-24 flex flex-col justify-center">
-                                    <div className="w-20 h-1 bg-emerald-500 mb-10 rounded-full group-hover:w-32 transition-all duration-700"></div>
-                                    <h3 className="text-4xl lg:text-5xl font-black text-slate-900 mb-8 tracking-tight">{mol.title}</h3>
-                                    <p className="text-xl text-slate-500 font-bold leading-relaxed mb-12 opacity-80 group-hover:opacity-100 transition-opacity">
+                                <div className="w-full md:w-1/2 p-10 md:p-16 flex flex-col justify-center">
+                                    <div className="w-16 h-1 bg-secondary-500 mb-8 rounded-full"></div>
+                                    <h3 className="text-3xl font-black text-slate-900 mb-6 leading-tight">{mol.title}</h3>
+                                    <p className="text-xl text-slate-600 leading-relaxed mb-10">
                                         {mol.description}
                                     </p>
-                                    <Link href={`/molecules/${mol.slug}`} className="group/btn inline-flex max-w-max items-center justify-center gap-3 px-10 py-5 rounded-full bg-slate-900 text-white font-black hover:bg-slate-800 transition-all shadow-xl hover:-translate-y-1 duration-300">
-                                        View Study Design <ArrowRight size={20} className="group-hover/btn:translate-x-1 transition-transform" />
+                                    <Link href={`/molecules/${mol.slug}`} className="inline-flex max-w-max items-center justify-center gap-3 px-8 py-4 rounded-full bg-primary-800 text-white font-bold hover:bg-primary-900 transition-colors shadow-lg group-hover:-translate-y-1">
+                                        Explore {mol.title} Pathways <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                                     </Link>
                                 </div>
                             </motion.div>
                         ))}
                     </div>
                 </div>
-                <div className="absolute bottom-0 left-0 w-full h-[500px] bg-gradient-to-t from-white to-transparent opacity-50"></div>
             </section>
 
-            {/* Final CTA (Mesh Style) */}
-            <section className="py-40 bg-transparent relative overflow-hidden text-center">
-                <div className="container mx-auto px-6 relative z-10">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        className="max-w-4xl mx-auto p-20 rounded-[4rem] bg-indigo-600 text-white relative overflow-hidden shadow-3xl"
-                    >
-                        <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-400/20 rounded-full blur-[100px] -mr-48 -mt-48"></div>
-                        <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-400/20 rounded-full blur-[100px] -ml-48 -mb-48"></div>
-
-                        <h2 className="text-4xl md:text-5xl font-black mb-8 relative z-10 tracking-tight leading-tight">Need a Specialized Assay <br />Not Listed Here?</h2>
-                        <p className="text-xl text-indigo-100 font-bold mb-12 relative z-10 max-w-2xl mx-auto">
-                            Our scientific team develops custom protocols for novel modalities and complex molecules everyday.
-                        </p>
-                        <Link href="/contact" className="inline-flex items-center gap-3 px-12 py-5 rounded-full bg-white text-indigo-600 font-black hover:bg-slate-50 transition-all shadow-2xl hover:scale-105 relative z-10 duration-300">
-                            Consult with Experts <ArrowRight size={22} />
-                        </Link>
-                    </motion.div>
+            {/* Final CTA */}
+            <section className="py-24 bg-primary-900 relative overflow-hidden text-center">
+                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+                <div className="container mx-auto px-4 relative z-10">
+                    <h2 className="text-3xl font-bold text-white mb-8">Need a Custom Assay Not Listed Here?</h2>
+                    <Link href="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-primary-900 font-bold hover:bg-slate-100 transition shadow-xl hover:scale-105">
+                        Contact Our Scientific Team <ArrowRight size={20} />
+                    </Link>
                 </div>
             </section>
         </div>
