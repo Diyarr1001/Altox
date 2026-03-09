@@ -100,7 +100,7 @@ export default function Home() {
         <div className="container mx-auto px-4 relative z-10">
           <motion.div className="w-full lg:w-[85%] xl:w-2/3" initial="hidden" animate="visible" variants={staggerContainer}>
 
-            <motion.div
+            {/* <motion.div
               variants={fadeUp}
               className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-white/5 backdrop-blur-2xl border border-white/10 text-secondary-300 text-xs md:text-sm font-black mb-12 shadow-[0_0_40px_rgba(74,222,128,0.15)] uppercase tracking-[0.3em] relative overflow-hidden group"
             >
@@ -115,7 +115,7 @@ export default function Home() {
                 <Zap size={16} className="text-secondary-400" />
               </motion.div>
               <span className="relative z-10">Next-Gen GLP Safety Assessment</span>
-            </motion.div>
+            </motion.div> */}
 
             <motion.h1
               className="text-[3.5rem] md:text-7xl lg:text-[8.5rem] font-black text-white leading-[0.95] mb-10 tracking-tighter"
@@ -126,13 +126,13 @@ export default function Home() {
                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                 className="block mb-2"
               >
-                Advancing <span className="text-transparent bg-clip-text bg-gradient-to-t from-white to-white/70">Safety.</span>
+                Advancing <span className="bg-clip-text bg-gradient-to-t from-white to-white/70">Safety.</span>
               </motion.span>
               <motion.span
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-                className="block text-transparent bg-clip-text bg-gradient-to-r from-secondary-300 via-white to-secondary-500 drop-shadow-[0_0_50px_rgba(74,222,128,0.4)]"
+                className="block bg-clip-text bg-gradient-to-r from-secondary-300 via-white to-secondary-500 drop-shadow-[0_0_50px_rgba(74,222,128,0.4)]"
               >
                 Accelerating Innovation.
               </motion.span>
@@ -144,7 +144,7 @@ export default function Home() {
               transition={{ delay: 0.6, duration: 0.8 }}
               className="relative"
             >
-              <p className="text-xl md:text-2xl text-slate-300/90 mb-14 max-w-2xl leading-relaxed font-light border-l-2 border-secondary-500/50 pl-8 italic">
+              <p className="text-xl md:text-2xl text-slate-300/90 mb-14 max-w-2xl leading-relaxed font-light border-l-2 border-secondary-500/50 pl-8">
                 Precision preclinical pipelines powered by ethics, advanced 3D models, and a state-of-the-art facility in Pune, India.
               </p>
             </motion.div>
