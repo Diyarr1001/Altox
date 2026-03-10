@@ -64,58 +64,50 @@ export default function Home() {
     <div className="w-full bg-slate-50 overflow-hidden">
 
       {/* ================= HERO SECTION ================= */}
-      <section ref={heroRef} className="relative h-[110vh] min-h-[900px] flex items-center overflow-hidden bg-slate-950">
+      <section ref={heroRef} className="relative h-[115vh] min-h-[950px] flex items-center overflow-hidden bg-slate-950">
         <motion.div style={{ y: yBg, opacity: opacityBg }} className="absolute inset-0 w-full h-full z-0">
-          <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-40 scale-110" poster="https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=2070&auto=format&fit=crop">
+          <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-30 scale-110" poster="https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=2070&auto=format&fit=crop">
             <source src="https://cdn.pixabay.com/video/2019/11/04/28775-372172778_large.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-br from-primary-950/95 via-primary-900/80 to-slate-950/60"></div>
+
+          {/* Secondary Ambient Media Overlay */}
+          <div className="absolute inset-0 bg-slate-950/20 backdrop-blur-[2px]"></div>
+
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-950/95 via-primary-900/40 to-slate-950/90"></div>
 
           {/* Animated Glowing Orbs - Innovative Motion */}
           <motion.div
             animate={{
-              x: [0, 100, -50, 0],
-              y: [0, -50, 50, 0],
-              scale: [1, 1.3, 0.9, 1],
-              opacity: [0.3, 0.5, 0.2, 0.3]
+              x: [0, 150, -80, 0],
+              y: [0, -100, 100, 0],
+              scale: [1, 1.5, 0.8, 1],
+              opacity: [0.3, 0.6, 0.2, 0.3]
             }}
-            transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-secondary-500/20 rounded-full blur-[140px] mix-blend-screen"
+            transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-1/4 left-1/4 w-[800px] h-[800px] bg-secondary-500/10 rounded-full blur-[180px] mix-blend-screen"
           />
           <motion.div
             animate={{
-              x: [0, -120, 80, 0],
-              y: [0, 80, -40, 0],
-              scale: [1, 1.4, 0.8, 1],
-              opacity: [0.2, 0.4, 0.1, 0.2]
+              x: [0, -200, 150, 0],
+              y: [0, 150, -80, 0],
+              scale: [1, 1.8, 0.7, 1],
+              opacity: [0.2, 0.5, 0.1, 0.2]
             }}
-            transition={{ duration: 25, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-            className="absolute bottom-1/4 right-1/4 w-[700px] h-[700px] bg-primary-500/20 rounded-full blur-[160px] mix-blend-screen"
+            transition={{ duration: 30, repeat: Infinity, ease: "easeInOut", delay: 3 }}
+            className="absolute bottom-1/4 right-1/4 w-[900px] h-[900px] bg-primary-500/10 rounded-full blur-[200px] mix-blend-screen"
           />
 
-          {/* Subtle Grid Overlay */}
-          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.03]"></div>
+          {/* Floating Particle/Grid Visual */}
+          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.05] pointer-events-none"></div>
+
+          {/* Cinematic Light Leak */}
+          <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-conic from-secondary-500/5 via-transparent to-transparent animate-slow-spin"></div>
         </motion.div>
 
         <div className="container mx-auto px-4 relative z-10">
           <motion.div className="w-full lg:w-[85%] xl:w-2/3" initial="hidden" animate="visible" variants={staggerContainer}>
 
-            {/* <motion.div
-              variants={fadeUp}
-              className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-white/5 backdrop-blur-2xl border border-white/10 text-secondary-300 text-xs md:text-sm font-black mb-12 shadow-[0_0_40px_rgba(74,222,128,0.15)] uppercase tracking-[0.3em] relative overflow-hidden group"
-            >
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-[100%] group-hover:translate-x-[100%] transition-transform duration-1000"
-              />
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                className="relative z-10"
-              >
-                <Zap size={16} className="text-secondary-400" />
-              </motion.div>
-              <span className="relative z-10">Next-Gen GLP Safety Assessment</span>
-            </motion.div> */}
+
 
             <motion.h1
               className="text-[3.5rem] md:text-7xl lg:text-[8.5rem] font-black text-white leading-[0.95] mb-10 tracking-tighter"
@@ -224,22 +216,31 @@ export default function Home() {
             {/* Bento Box 1: By Services (Large) */}
             <motion.div
               initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
-              className="lg:col-span-8 bg-primary-900 rounded-[2.5rem] p-10 lg:p-14 relative overflow-hidden group hover:shadow-2xl hover:shadow-primary-900/30 transition-all duration-500 flex flex-col justify-end"
+              className="lg:col-span-8 bg-primary-900 rounded-[3rem] p-10 lg:p-14 relative overflow-hidden group hover:shadow-[0_30px_60px_-15px_rgba(13,148,136,0.3)] transition-all duration-700 flex flex-col justify-end"
             >
               <div className="absolute inset-0">
-                <img src="https://images.unsplash.com/photo-1574345330896-180b5eacc5e4?q=80&w=1969&auto=format&fit=crop" className="w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-1000" alt="Services" />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary-950 via-primary-900/80 to-transparent"></div>
+                <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-60 mix-blend-luminosity group-hover:scale-110 transition-transform duration-1000">
+                  <source src="https://cdn.pixabay.com/video/2021/08/17/85374-589574488_large.mp4" type="video/mp4" />
+                </video>
+                <div className="absolute inset-0 bg-gradient-to-t from-primary-950 via-primary-900/60 to-transparent"></div>
               </div>
               <div className="relative z-10">
-                <div className="w-16 h-16 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mb-6 group-hover:-translate-y-2 transition-transform border border-white/20">
-                  <Activity size={32} className="text-secondary-400" />
-                </div>
-                <h3 className="text-4xl font-black text-white mb-4">By Service Modality</h3>
-                <p className="text-primary-100 text-lg max-w-lg mb-8 opacity-0 group-hover:opacity-100 -translate-y-4 group-hover:translate-y-0 transition-all duration-500">
-                  Explore our highly specific toxicological disciplines including General Tox, Genetic Tox, and In Vitro models.
+                <motion.div
+                  whileHover={{ rotate: 15, scale: 1.1 }}
+                  className="w-20 h-20 bg-white/10 backdrop-blur-2xl rounded-3xl flex items-center justify-center mb-8 border border-white/20 shadow-2xl"
+                >
+                  <Activity size={40} className="text-secondary-400" />
+                </motion.div>
+                <h3 className="text-5xl font-black text-white mb-6 tracking-tighter">By Service Modality</h3>
+                <p className="text-primary-100 text-xl max-w-xl mb-10 font-light leading-relaxed group-hover:translate-x-2 transition-transform duration-500">
+                  Precision toxicity mapping across specialized disciplines. From endocrine disruptor screening to advanced in-vitro alternatives.
                 </p>
-                <Link href="/services#by-service" className="inline-flex items-center gap-2 text-secondary-400 font-bold text-lg group/link">
-                  Explore Methodologies <ArrowRight size={20} className="group-hover/link:translate-x-2 transition-transform" />
+                <Link href="/services#by-service" className="inline-flex items-center gap-4 text-secondary-500 font-black text-xl group/link">
+                  <span className="relative overflow-hidden inline-block">
+                    Explore Methodologies
+                    <span className="absolute bottom-0 left-0 w-full h-0.5 bg-secondary-500 -translate-x-full group-hover/link:translate-x-0 transition-transform duration-500"></span>
+                  </span>
+                  <ArrowRight size={24} className="group-hover/link:translate-x-3 transition-transform duration-500" />
                 </Link>
               </div>
             </motion.div>
@@ -247,24 +248,31 @@ export default function Home() {
             {/* Bento Box 2: By Molecule (Tall) */}
             <motion.div
               initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}
-              className="lg:col-span-4 lg:row-span-2 bg-white rounded-[2.5rem] p-10 relative overflow-hidden group hover:shadow-2xl transition-all duration-500 border border-slate-100 flex flex-col"
+              className="lg:col-span-4 lg:row-span-2 bg-white rounded-[3rem] p-10 relative overflow-hidden group hover:shadow-[0_30px_60px_rgba(0,0,0,0.05)] transition-all duration-500 border border-slate-100 flex flex-col"
             >
-              <div className="w-16 h-16 bg-primary-50 rounded-2xl flex items-center justify-center mb-8 border border-primary-100 group-hover:scale-110 transition-transform">
-                <Dna size={32} className="text-primary-600" />
+              <div className="absolute top-0 right-0 w-32 h-32 bg-secondary-50 opacity-0 group-hover:opacity-100 transition-opacity rounded-bl-[5rem]"></div>
+              <div className="w-20 h-20 bg-primary-50 rounded-[2rem] flex items-center justify-center mb-10 border border-primary-100 group-hover:scale-110 group-hover:bg-primary-100 transition-all duration-500 shadow-sm">
+                <Dna size={40} className="text-primary-600" />
               </div>
-              <h3 className="text-3xl font-black text-slate-900 mb-6">By Target Molecule</h3>
-              <p className="text-slate-600 mb-10 flex-grow text-lg leading-relaxed">
-                We customize testing pipelines around the specific chemical nature of your test item, ensuring precision regulatory compliance.
+              <h3 className="text-4xl font-black text-slate-900 mb-8 tracking-tighter">By Target Molecule</h3>
+              <p className="text-slate-500 mb-12 flex-grow text-xl font-light leading-relaxed">
+                Architecting safety portfolios mapped to the unique molecular logic of your innovation.
               </p>
-              <div className="space-y-4 mb-10">
+              <div className="space-y-5 mb-12">
                 {['Pharmaceuticals', 'Biologics & Vaccines', 'Crop Protection', 'Medical Devices'].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3 p-4 rounded-xl bg-slate-50 border border-slate-100 group-hover:bg-primary-50 group-hover:border-primary-100 transition-colors">
-                    <CheckCircle2 size={20} className="text-secondary-500" />
-                    <span className="font-bold text-slate-700">{item}</span>
-                  </div>
+                  <motion.div
+                    key={i}
+                    whileHover={{ x: 10 }}
+                    className="flex items-center gap-4 p-5 rounded-2xl bg-slate-50 border border-slate-100 group-hover:bg-white group-hover:border-primary-100 group-hover:shadow-md transition-all duration-300"
+                  >
+                    <div className="w-8 h-8 rounded-xl bg-secondary-100 flex items-center justify-center">
+                      <CheckCircle2 size={18} className="text-secondary-600" />
+                    </div>
+                    <span className="font-bold text-slate-800 text-sm tracking-tight">{item}</span>
+                  </motion.div>
                 ))}
               </div>
-              <Link href="/services#by-molecule" className="w-full py-4 rounded-2xl bg-slate-900 text-white font-bold text-center hover:bg-primary-600 transition-colors shadow-lg">
+              <Link href="/services#by-molecule" className="w-full py-5 rounded-2xl bg-slate-900 text-white font-black text-center hover:bg-primary-600 transition-all duration-300 shadow-xl active:scale-95 text-lg">
                 View All Industries
               </Link>
             </motion.div>
@@ -272,27 +280,41 @@ export default function Home() {
             {/* Bento Box 3: Facility Preview */}
             <motion.div
               initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.4 }}
-              className="lg:col-span-4 bg-gradient-to-br from-secondary-400 to-secondary-600 rounded-[2.5rem] p-10 relative overflow-hidden group hover:shadow-2xl hover:shadow-secondary-500/30 transition-all duration-500 text-slate-900"
+              className="lg:col-span-4 bg-slate-900 rounded-[3rem] p-12 relative overflow-hidden group hover:shadow-[0_30px_60px_rgba(0,0,0,0.2)] transition-all duration-700 flex flex-col justify-between"
             >
-              <div className="absolute top-0 right-0 w-40 h-40 bg-white opacity-20 rounded-full blur-3xl mix-blend-overlay"></div>
-              <h3 className="text-3xl font-black mb-4">25,000 sq.ft.</h3>
-              <p className="font-medium text-slate-800 mb-8 text-lg">State-of-the-art Vivarium & Labs in Pune.</p>
-              <Link href="/facility" className="inline-flex items-center gap-2 bg-slate-900 text-white px-6 py-3 rounded-full font-bold hover:bg-white hover:text-slate-900 transition-colors mt-auto">
-                Tour Facility <ArrowRight size={16} />
+              <div className="absolute inset-0">
+                <img src="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?q=80&w=2070&auto=format&fit=crop" className="w-full h-full object-cover opacity-30 group-hover:scale-110 transition-transform duration-1000" alt="Facility" />
+                <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900/40 to-transparent"></div>
+              </div>
+              <div className="relative z-10">
+                <div className="flex items-baseline gap-2 mb-4">
+                  <span className="text-5xl font-black text-secondary-400 tracking-tighter">25,000</span>
+                  <span className="text-xl font-bold text-white/60">sq.ft.</span>
+                </div>
+                <p className="text-2xl font-bold text-white leading-tight">Advanced Vivarium & GLP Analytics HQ in Pune.</p>
+              </div>
+              <Link href="/facility" className="relative z-10 inline-flex items-center justify-center gap-3 bg-white text-slate-900 px-8 py-4 rounded-2xl font-black hover:bg-secondary-400 transition-colors mt-8 group/btn">
+                Tour HQ <ArrowRight size={20} className="group-hover/btn:translate-x-2 transition-transform" />
               </Link>
             </motion.div>
 
             {/* Bento Box 4: Contact Teaser */}
             <motion.div
               initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.6 }}
-              className="lg:col-span-4 bg-white rounded-[2.5rem] p-10 border border-slate-100 group hover:shadow-2xl hover:border-primary-200 transition-all duration-500 flex flex-col justify-center items-center text-center"
+              className="lg:col-span-4 bg-primary-50 rounded-[3rem] p-12 border border-primary-100 group hover:shadow-[0_30px_60px_rgba(13,148,136,0.1)] transition-all duration-500 flex flex-col justify-center items-center text-center relative overflow-hidden"
             >
-              <div className="w-16 h-16 bg-primary-900 rounded-full flex items-center justify-center text-secondary-400 mb-6 group-hover:rotate-12 transition-transform">
-                <ShieldCheck size={32} />
-              </div>
-              <h3 className="text-2xl font-black text-slate-900 mb-2">Need a Custom Quote?</h3>
-              <Link href="/contact" className="text-primary-600 font-bold hover:underline flex items-center gap-1 mt-4">
-                Speak to our scientists <ChevronRight size={16} />
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="w-24 h-24 bg-white rounded-3xl shadow-xl flex items-center justify-center text-primary-600 mb-8 border border-primary-100"
+              >
+                <ShieldCheck size={48} />
+              </motion.div>
+              <h3 className="text-3xl font-black text-slate-900 mb-4 tracking-tighter leading-none">Need a Custom Quote?</h3>
+              <p className="text-slate-600 font-light mb-8 max-w-[200px]">Our lead toxicologists are ready to architect your safety package.</p>
+              <Link href="/contact" className="inline-flex items-center gap-2 text-primary-700 font-black text-lg group-hover:text-primary-900 transition-colors">
+                <span className="border-b-2 border-primary-200 group-hover:border-primary-600 transition-all">Consulte Now</span>
+                <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </Link>
             </motion.div>
 
@@ -360,42 +382,160 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= ULTRA CTA ================= */}
-      {/* <section className="py-40 relative overflow-hidden bg-white">
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
-        <div className="container mx-auto px-4 text-center z-10 relative">
-          <motion.div initial={{ scale: 0.8, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once: true }} transition={{ type: "spring", bounce: 0.5 }}>
-            <h2 className="text-6xl md:text-8xl font-black text-slate-900 mb-8 tracking-tighter">Ready to <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-secondary-500">Accelerate?</span></h2>
-            <p className="text-2xl text-slate-500 mb-12 max-w-2xl mx-auto">Get your custom IND-enabling safety package quoted today by our leading toxicologists.</p>
-            <Link href="/contact" className="inline-flex items-center gap-4 px-12 py-6 rounded-full bg-slate-900 text-white font-black text-2xl hover:bg-primary-600 shadow-[0_20px_50px_rgba(0,0,0,0.2)] hover:shadow-[0_20px_50px_rgba(13,148,136,0.4)] transition-all duration-500 hover:-translate-y-2">
-              Start Inquiry <Zap size={28} className="text-secondary-400" />
-            </Link>
-          </motion.div>
-        </div>
-      </section> */}
+      {/* ================= MOLECULE EXPLORER: TARGET SPECIFICITY ================= */}
+      <section className="py-40 bg-white relative overflow-hidden">
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+            <div className="max-w-3xl">
+              <motion.span initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-secondary-600 font-black tracking-[0.2em] uppercase text-sm mb-4 block">Target Specificity</motion.span>
+              <motion.h2 initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="text-5xl md:text-7xl font-black text-slate-900 tracking-tighter">Molecule Explorer</motion.h2>
+            </div>
+            <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-xl text-slate-500 font-light max-w-md leading-relaxed">
+              We architect safety portfolios based on the molecular complexity of your unique innovations.
+            </motion.p>
+          </div>
 
-      {/* ================= MOLECULES OVERVIEW ================= */}
-      <section className="py-40 bg-slate-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-black text-center text-slate-900 mb-12">Our Molecule Expertise</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {['Pharmaceuticals', 'Biologics & Vaccines', 'Crop Protection', 'Medical Devices'].map((item, i) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Pharmaceuticals",
+                type: "NCEs",
+                img: "https://images.unsplash.com/photo-1614850715649-1d0106293cb1?q=80&w=2070&auto=format&fit=crop",
+                slug: "pharmaceuticals",
+                features: ["IND-Enabling", "NCE Optimization", "PK/TK Modeling"]
+              },
+              {
+                title: "Biologics",
+                type: "Large Molecules",
+                img: "https://images.unsplash.com/photo-1618015359908-058e0a138c29?q=80&w=2070&auto=format&fit=crop",
+                slug: "biologics",
+                features: ["mAbs & Proteins", "Immunogenicity", "ICH S6 Compliance"]
+              },
+              {
+                title: "Crop Protection",
+                type: "Agrochemicals",
+                img: "https://images.unsplash.com/photo-1628189675276-879e614da66d?q=80&w=2070&auto=format&fit=crop",
+                slug: "crop-protection-agents",
+                features: ["6-Pack Arrays", "Environmental Fate", "EPA/EFSA Dossiers"]
+              }
+            ].map((mol, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-100px' }}
-                transition={{ duration: 0.6, delay: i * 0.2 }}
-                className="bg-white rounded-[2rem] p-6 shadow-lg hover:shadow-2xl transition-shadow"
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: i * 0.15 }}
+                className="group relative h-[500px] rounded-[3rem] overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-700"
               >
-                <div className="w-full h-48 mb-4 bg-gray-200 rounded-lg overflow-hidden">
-                  <img src={`https://source.unsplash.com/400x300/?${item}`} alt={item} className="w-full h-full object-cover" />
+                <img src={mol.img} alt={mol.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+
+                <div className="absolute inset-0 p-12 flex flex-col justify-end transform transition-transform duration-500 group-hover:-translate-y-4">
+                  <span className="text-secondary-400 font-black text-xs uppercase tracking-widest mb-3">{mol.type}</span>
+                  <h3 className="text-4xl font-black text-white mb-6 tracking-tighter leading-none">{mol.title}</h3>
+
+                  <div className="flex flex-wrap gap-2 mb-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                    {mol.features.map((feat, fIdx) => (
+                      <span key={fIdx} className="px-4 py-1.5 bg-white/10 backdrop-blur-md rounded-full text-white text-[10px] font-bold border border-white/20">
+                        {feat}
+                      </span>
+                    ))}
+                  </div>
+
+                  <Link href={`/molecules/${mol.slug}`} className="w-14 h-14 bg-secondary-500 rounded-full flex items-center justify-center text-slate-950 transition-all duration-500 group-hover:w-full group-hover:rounded-2xl gap-3">
+                    <ArrowRight size={24} className="group-hover:translate-x-0" />
+                    <span className="overflow-hidden w-0 group-hover:w-auto font-black text-sm whitespace-nowrap transition-all duration-500 opacity-0 group-hover:opacity-100">
+                      Explore Pipeline
+                    </span>
+                  </Link>
                 </div>
-                <h3 className="text-2xl font-bold text-slate-800 mb-2">{item}</h3>
-                <p className="text-slate-600">Tailored testing pipelines for {item.toLowerCase()} ensuring regulatory compliance and scientific excellence.</p>
               </motion.div>
             ))}
           </div>
+
+          <motion.div
+            initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
+            className="mt-20 flex justify-center"
+          >
+            <Link href="/services#by-molecule" className="px-12 py-5 rounded-full border-2 border-slate-900 text-slate-900 font-black hover:bg-slate-900 hover:text-white transition-all duration-300">
+              View All Molecule Modalities
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ================= SCIENTIFIC EXCELLENCE: THE ALTOX EDGE ================= */}
+      <section className="py-40 relative bg-slate-950 overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <video autoPlay loop muted playsInline className="w-full h-full object-cover">
+            <source src="https://cdn.pixabay.com/video/2018/11/02/18987-295624750_large.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent"></div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl">
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-6xl md:text-8xl font-black text-white mb-12 tracking-tighter"
+            >
+              Scientific <span className="text-secondary-500">Excellence</span> at Scale.
+            </motion.h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              {[
+                { title: "Advanced Vivarium", desc: "A world-class AAALAC inspired facility in Pune designed for diverse species monitoring.", icon: <ShieldCheck className="text-secondary-400" /> },
+                { title: "Bioanalytical Core", desc: "Equipped with state-of-the-art LC-MS/MS platforms for ultra-sensitive metabolic profiling.", icon: <Activity className="text-secondary-400" /> },
+                { title: "Digital Quality", desc: "100% computerized data capture ensures absolute integrity and rapid electronic submissions.", icon: <BadgeCheck className="text-secondary-400" /> },
+                { title: "Expert Pathology", desc: "Led by internationally certified pathologists (ABT/ECVP) for nuanced apical interpretation.", icon: <Microscope className="text-secondary-400" /> }
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="flex gap-6"
+                >
+                  <div className="flex-shrink-0 w-12 h-12 bg-white/5 backdrop-blur-xl rounded-xl border border-white/10 flex items-center justify-center">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-white mb-3">{item.title}</h4>
+                    <p className="text-slate-400 font-light leading-relaxed">{item.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.5 }} className="mt-16">
+              <Link href="/facility" className="inline-flex items-center gap-4 text-white font-black text-2xl group">
+                Tour Our Pune HQ <ArrowRight className="text-secondary-500 group-hover:translate-x-4 transition-transform" size={28} />
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= ULTRA CTA: CINEMATIC FINISH ================= */}
+      <section className="py-52 relative overflow-hidden bg-white">
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+        <div className="container mx-auto px-4 text-center z-10 relative">
+          <motion.div initial={{ scale: 0.8, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once: true }} transition={{ type: "spring", bounce: 0.5 }}>
+            <h2 className="text-7xl md:text-9xl font-black text-slate-900 mb-10 tracking-tighter leading-[0.85]">
+              Ready to <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-secondary-500">Accelerate?</span>
+            </h2>
+            <p className="text-2xl md:text-3xl text-slate-500 mb-16 max-w-3xl mx-auto font-light leading-snug">
+              Partner with Altox Labs for a seamless transition from discovery to the clinic.
+            </p>
+            <Link href="/contact" className="group relative inline-flex items-center gap-6 px-16 py-8 rounded-full bg-slate-900 text-white font-black text-3xl overflow-hidden transition-all duration-700 hover:bg-primary-600 shadow-[0_30px_70px_rgba(0,0,0,0.2)] hover:shadow-[0_40px_80px_rgba(13,148,136,0.3)] hover:-translate-y-3">
+              <span className="relative z-10">Start Inquiry</span>
+              <Zap size={36} className="text-secondary-400 relative z-10 group-hover:scale-125 group-hover:rotate-12 transition-transform" />
+              <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 -translate-x-full group-hover:animate-[shimmer_3s_infinite]" />
+            </Link>
+          </motion.div>
         </div>
       </section>
     </div>
