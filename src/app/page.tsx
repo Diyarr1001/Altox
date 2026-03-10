@@ -5,7 +5,8 @@ import Link from 'next/link';
 import { useRef, useState, useEffect } from 'react';
 import {
   ArrowRight, ShieldCheck, Activity, Dna, TestTubes, FlaskConical, Droplets,
-  BadgeCheck, PlayCircle, Users, Lightbulb, CheckCircle, ShieldAlert, Handshake, ChevronRight, Zap, CheckCircle2
+  BadgeCheck, PlayCircle, Users, Lightbulb, CheckCircle, ShieldAlert, Handshake, ChevronRight, Zap, CheckCircle2,
+  Microscope
 } from 'lucide-react';
 
 const staggerContainer: Variants = {
